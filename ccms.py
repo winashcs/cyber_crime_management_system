@@ -7,7 +7,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.root=root
         self.root.geometry('1300x700+0+0')
         self.root.title('CYBER CRIME MANAGEMENT SYSTEM') 
-
+        self.root.iconbitmap('icon.ico')
 
 
 
