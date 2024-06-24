@@ -9,7 +9,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.root.title('CYBER CRIME MANAGEMENT SYSTEM') 
         self.root.iconbitmap('images/icon.ico')
         
-        title=Label(self.root,text='CYBER CRIME MANAGEMENT SYSTEM',font=('Helvetica',30,'bold'),bg='black',fg='green')
+        title=Label(self.root,text='CYBER CRIME MANAGEMENT SYSTEM',font=('Brush Script MT',30,'bold'),bg='black',fg='green')
         title.place(x=0,y=0,width=1366,height=70)
         
         logo1_open=Image.open('images/logo.png')
