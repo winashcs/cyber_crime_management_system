@@ -47,6 +47,9 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         frame2=Frame(self.root,bd=2,relief=RIDGE,bg='white')
         frame2.place(x=10,y=200,width=1336,height=495)
         
+        frame2_1=LabelFrame(frame2,bd=2,relief=RIDGE,text='Cyber Threat Updates',font=("Garamond",12,'bold'),fg='dark green',bg='white')
+        frame2_1.place(x=10,y=10,width=1316,height=238)
+        
         
 
 
