@@ -6,22 +6,22 @@ class CC: #i used CC here because CyberCrime will be a long keyword
     def __init__(self,root):
         self.root=root
         self.root.geometry('1366x768+0+0')
-        self.root.title('CYBER CRIME MANAGEMENT SYSTEM') 
+        self.root.title('Cybersecurity Incident Management System') 
         self.root.iconbitmap('images/icon.ico')
         
-        title=Label(self.root,text='CYBER CRIME MANAGEMENT SYSTEM',font=('Brush Script MT',30,'bold'),bg='black',fg='green')
+        title=Label(self.root,text='Cybersecurity Incident Management System',font=('Brush Script MT',45,'bold'),bg='black',fg='green')
         title.place(x=0,y=0,width=1366,height=70)
         
         logo1_open=Image.open('images/logo.png')
         logo1_open=logo1_open.resize((100,65), Image.Resampling.LANCZOS)
         self.image_logo1=ImageTk.PhotoImage(logo1_open)
         self.logo1=Label(self.root,image=self.image_logo1)
-        self.logo1.place(x=203,y=3,width=100,height=65)
+        self.logo1.place(x=123,y=3,width=100,height=65)
         logo2_open=Image.open('images/logo.png')
         logo2_open=logo2_open.resize((100,65), Image.Resampling.LANCZOS)
         self.image_logo2=ImageTk.PhotoImage(logo2_open)
         self.logo2=Label(self.root,image=self.image_logo2)
-        self.logo2.place(x=1063,y=3,width=100,height=65)
+        self.logo2.place(x=1143,y=3,width=100,height=65)
         
         frame1=Frame(self.root,bd=2,relief=RIDGE,bg='white')
         frame1.place(x=0,y=70,width=1366,height=130)
