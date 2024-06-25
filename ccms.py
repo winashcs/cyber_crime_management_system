@@ -49,11 +49,15 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         
         frame2_1=LabelFrame(frame2,bd=2,relief=RIDGE,text='Cybersecurity Alerts',font=("Garamond",15,'bold'),fg='dark green',bg='white')
         frame2_1.place(x=10,y=10,width=1316,height=238)
+        b1=Label(frame2_1,text='Case ID :',font=("Ebrima",10,'bold'),fg='black',bg='white')
+        b1.grid(row=0,column=0,padx=2,sticky=W)
+        b11=ttk.Entry(frame2_1,width=20,font=("Times New Roman",10,'bold'))
+        b11.grid(row=0,column=1,padx=2,sticky=W)
         
         frame2_2=LabelFrame(frame2,bd=2,relief=RIDGE,text='Cybersecurity Alert Dashboard',font=("Garamond",15,'bold'),fg='dark green',bg='white')
         frame2_2.place(x=10,y=248,width=1316,height=238)
         
-        frame2_2_1=LabelFrame(frame2_2,bd=2,relief=RIDGE,text='Search Record',font=("Helvetica",10,'bold'),fg='black',bg='white')
+        frame2_2_1=LabelFrame(frame2_2,bd=2,relief=RIDGE,text='Search Record',font=("Lucida Sans Unicode",10,'bold'),fg='black',bg='white')
         frame2_2_1.place(x=0,y=0,width=1306,height=50)
         
         
