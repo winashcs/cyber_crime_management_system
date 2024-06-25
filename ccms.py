@@ -45,7 +45,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.i333.place(x=910,y=0,width=455,height=130)
         
         frame2=Frame(self.root,bd=2,relief=RIDGE,bg='white')
-        frame2.place(x=10,y=200,width=1336,height=500)
+        frame2.place(x=10,y=200,width=1336,height=495)
         
         
 
