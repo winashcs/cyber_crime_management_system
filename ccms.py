@@ -54,6 +54,10 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         b11=ttk.Entry(frame2_1,width=20,font=("Times New Roman",10,'bold'))
         b11.grid(row=0,column=1,padx=2,sticky=W)
         
+        
+        
+        
+        
         frame2_2=LabelFrame(frame2,bd=2,relief=RIDGE,text='Cybersecurity Alert Dashboard',font=("Garamond",15,'bold'),fg='dark green',bg='white')
         frame2_2.place(x=10,y=248,width=1316,height=238)
         
