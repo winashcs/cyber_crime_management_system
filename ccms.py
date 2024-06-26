@@ -107,8 +107,14 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         b1414.grid(row=3,column=5,padx=2,sticky=W,pady=2)
         b15=Label(frame2_1,text='Status :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b15.grid(row=4,column=4,padx=2,sticky=W,pady=2)
-        b1515=ttk.Entry(frame2_1,width=20,font=("Times New Roman",10,'bold'))
-        b1515.grid(row=4,column=5,padx=2,sticky=W,pady=2)
+        status_var = StringVar(frame2_1)
+        status_var.set("Click Option")
+        b1515 = OptionMenu(frame2_1, status_var,"ONGOING", "CLOSED", "PENDING")
+        b1515.configure(font=("Times New Roman", 8,'bold'), bg='white',highlightthickness=1, highlightbackground='grey',activebackground='white',indicatoron=0)
+        b1515['menu'].configure(font=("Times New Roman", 10, 'bold'), bg='white')
+        b1515.grid(row=4, column=5, padx=2, pady=2, sticky=W)
+        
+        
         
         
         
