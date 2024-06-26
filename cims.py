@@ -194,8 +194,8 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         all1.grid(row=0,column=4,padx=4,sticky=W)
         
         table_frame=Frame(frame2_2,bd=2,relief=RIDGE)
-        table_frame.place(x=0,y=50,width=1306,height=162)
-
+        table_frame.place(x=0,y=50,width=1306,height=162)      
+        
 if __name__=="__main__":
     root=Tk()
     obj=CC(root)
