@@ -1,6 +1,7 @@
 from tkinter import* # for creating graphic user interface
 from tkinter import ttk  # (themed tk) we use ttk for modern widgets like buttons, labels, and other GUI elements
 from PIL import Image,ImageTk # helps for image processing in gui
+from tkcalendar import Calendar # for date
 
 class CC: #i used CC here because CyberCrime will be a long keyword
     def __init__(self,root):
@@ -76,8 +77,24 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         
         b5=Label(frame2_1,text='Date of incident :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b5.grid(row=4,column=0,padx=2,sticky=W,pady=2)
-        b55=ttk.Entry(frame2_1,width=20,font=("Times New Roman",10,'bold'))
-        b55.grid(row=4,column=1,padx=2,sticky=W,pady=2)
+        def show_calendar(event):
+            top = Toplevel(root)
+            top.iconbitmap('images/icon.ico')
+            cal = Calendar(top, selectmode='day', year=2023, month=1, day=1)
+            cal.pack(fill='both', expand=True)
+            
+            def select_date():
+                selected_date = cal.get_date()
+                b55.delete(0, END)
+                b55.insert(0, selected_date)
+                top.destroy()
+            
+            ok_button = ttk.Button(top, text="OK", command=select_date)
+            ok_button.pack(pady=10)
+        
+        b55 = ttk.Entry(frame2_1, width=20, font=("Times New Roman", 10, 'bold'))
+        b55.grid(row=4, column=1, padx=2, sticky=W, pady=2)
+        b55.bind('<Button-1>', show_calendar)
         
         b6=Label(frame2_1,text='Type of cybercrime :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b6.grid(row=0,column=2,padx=2,sticky=W,pady=2)
