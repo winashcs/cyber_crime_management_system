@@ -225,9 +225,23 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         
         self.details_table['show']='headings'
         
-        self.details_table.pack(fill=BOTH,expand=1)
-
+        self.details_table.column('1',width=55)
+        self.details_table.column('2',width=130)
+        self.details_table.column('3',width=90)
+        self.details_table.column('4',width=200)
+        self.details_table.column('5',width=95)
+        self.details_table.column('6',width=120)
+        self.details_table.column('7',width=130)
+        self.details_table.column('8',width=110)
+        self.details_table.column('9',width=110)
+        self.details_table.column('10',width=110)
+        self.details_table.column('11',width=95)
+        self.details_table.column('12',width=130)
+        self.details_table.column('13',width=90)
+        self.details_table.column('14',width=200)
+        self.details_table.column('15',width=55)
         
+        self.details_table.pack(fill=BOTH,expand=1)        
         
 if __name__=="__main__":
     root=Tk()
