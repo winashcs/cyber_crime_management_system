@@ -162,6 +162,12 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         bt4=Button(bf,text='CLEAR',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
         bt4.grid(row=0,column=3,padx=3,pady=3)
         
+        i4=Image.open('images/i2.jpg')
+        i4=i4.resize((437,222), Image.LANCZOS)
+        self.i44=ImageTk.PhotoImage(i4)
+        self.i444=Label(frame2_1,image=self.i44)
+        self.i444.place(x=875,y=-10,width=437,height=222)
+        
         frame2_2=LabelFrame(frame2,bd=2,relief=RIDGE,text='Cybersecurity Alert Dashboard',font=("Garamond",15,'bold'),fg='dark green',bg='white')
         frame2_2.place(x=10,y=248,width=1316,height=238)
         
