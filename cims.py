@@ -179,6 +179,18 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         sb=Label(frame2_2_1,text='Search By',font=("Georgia",10,'bold'),bg='yellow',fg='black')
         sb.grid(row=0,column=0,padx=4,sticky=W)
         
+        design1=Image.open('images/design1.png')
+        design1=design1.resize((40,40), Image.LANCZOS)
+        self.design11=ImageTk.PhotoImage(design1)
+        self.design111=Label(frame2_2_1,image=self.design11)
+        self.design111.place(x=1000,y=-10,width=40,height=40)
+        
+        design2=Image.open('images/design2.png')
+        design2=design2.resize((40,40), Image.LANCZOS)
+        self.design22=ImageTk.PhotoImage(design2)
+        self.design222=Label(frame2_2_1,image=self.design22)
+        self.design222.place(x=1500,y=-10,width=40,height=40)
+        
         dd1=ttk.Combobox(frame2_2_1,font=("Georgia",9,'bold'),width=17,state='readonly')
         dd1['value']=('Select Option','Case ID','IP address','Status')
         dd1.current(0)
