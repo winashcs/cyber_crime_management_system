@@ -130,7 +130,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         b15=Label(frame2_1,text='Status :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b15.grid(row=4,column=4,padx=2,sticky=W,pady=2)
         selected = StringVar(frame2_1)
-        selected.set("SELECT    v")
+        selected.set("SELECT ▼")
         b1515 = OptionMenu(frame2_1, selected,"ONGOING", "CLOSED", "PENDING")
         b1515.configure(font=("Arial", 8,'bold'), bg='white',highlightthickness=1, highlightbackground='grey',activebackground='white',indicatoron=0)
         b1515['menu'].configure(font=("Times New Roman", 10, 'bold'), bg='white')
