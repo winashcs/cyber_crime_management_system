@@ -196,6 +196,18 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         table_frame=Frame(frame2_2,bd=2,relief=RIDGE)
         table_frame.place(x=0,y=50,width=1306,height=162)      
         
+        scroll_x=ttk.Scrollbar(table_frame,orient=HORIZONTAL)
+        scroll_y=ttk.Scrollbar(table_frame,orient=VERTICAL)
+        
+        self.details_table=ttk.Treeview(table_frame,column=('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'),xscrollcommand=scroll_x.set,yscrollcommand=scroll_y.set)
+        
+        scroll_x.pack(side=BOTTOM,fill=X)
+        scroll_y.pack(side=RIGHT,fill=Y)
+        
+        scroll_x.config(command=self.details_table.xview)
+        scroll_y.config(command=self.details_table.yview)
+        
+        
 if __name__=="__main__":
     root=Tk()
     obj=CC(root)
