@@ -174,8 +174,25 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         frame2_2=LabelFrame(frame2,bd=2,relief=RIDGE,text='Cybersecurity Alert Dashboard',font=("Garamond",15,'bold'),fg='dark green',bg='white')
         frame2_2.place(x=10,y=248,width=1316,height=238)
         
-        frame2_2_1=LabelFrame(frame2_2,bd=2,relief=RIDGE,text='Search Record',font=("Lucida Sans Unicode",10,'bold'),fg='black',bg='white')
+        frame2_2_1=LabelFrame(frame2_2,bd=2,relief=RIDGE,text='Search Record',font=("Lucida Sans Unicode",11,'bold'),fg='black',bg='white')
         frame2_2_1.place(x=0,y=0,width=1306,height=50)
+        sb=Label(frame2_2_1,text='Search By',font=("Georgia",10,'bold'),bg='yellow',fg='black')
+        sb.grid(row=0,column=0,padx=4,sticky=W)
+        
+        dd1=ttk.Combobox(frame2_2_1,font=("Georgia",9,'bold'),width=17,state='readonly')
+        dd1['value']=('Select Option','CASE ID','IP ADDRESS','STATUS')
+        dd1.current(0)
+        dd1.grid(row=0,column=1,padx=4,sticky=W)
+        
+        searchtxt=ttk.Entry(frame2_2_1,width=17,font=("Georgia",9,'bold'))
+        searchtxt.grid(row=0,column=2,padx=4,sticky=W)
+        
+        searchbn=Button(frame2_2_1,text='SEARCH',font=("Georgia",9,'bold'),bg='#fee01c',width=17,fg='black')
+        searchbn.grid(row=0,column=3,padx=4,sticky=W)
+        
+        all1=Button(frame2_2_1,text='SHOW ALL',font=("Georgia",9,'bold'),bg='#fee01c',width=17,fg='black')
+        all1.grid(row=0,column=4,padx=4,sticky=W)
+        
 
 if __name__=="__main__":
     root=Tk()
