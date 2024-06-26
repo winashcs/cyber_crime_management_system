@@ -65,16 +65,16 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         b3=Label(frame2_1,text='Victim Gender :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b3.grid(row=2,column=0,padx=2,sticky=W,pady=2)
         frame3_1=Frame(frame2_1,bd=1,relief=RIDGE,bg='white',highlightbackground="grey", highlightthickness=1)
-        frame3_1.place(x=120,y=54,width=146,height=27)
-        b33_male=Radiobutton(frame3_1, text='M',value='Male',font=("Arial",7,'bold'),bg='white')
+        frame3_1.place(x=120,y=56,width=146,height=30)
+        b33_male=Radiobutton(frame3_1, text='M',value='Male',font=("Arial",10,'bold'),bg='white')
         b33_male.grid(row=0,column=0,pady=0,padx=10,sticky=W)
-        b33_female=Radiobutton(frame3_1, text='F',value='Female',font=("Arial",7,'bold'),bg='white')
+        b33_female=Radiobutton(frame3_1, text='F',value='Female',font=("Arial",10,'bold'),bg='white')
         b33_female.grid(row=0,column=1,pady=0,padx=10,sticky=W)
         
         b4=Label(frame2_1,text='Victim Details :',font=("Ebrima",10,'bold'),fg='black',bg='white')
-        b4.grid(row=3,column=0,padx=2,sticky=W,pady=2)
+        b4.grid(row=3,column=0,padx=2,sticky=W,pady=10)
         b44=ttk.Entry(frame2_1,width=20,font=("Times New Roman",10,'bold'))
-        b44.grid(row=3,column=1,padx=2,sticky=W,pady=2)
+        b44.grid(row=3,column=1,padx=2,sticky=W,pady=3)
         
         b5=Label(frame2_1,text='Date of incident :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b5.grid(row=4,column=0,padx=2,sticky=W,pady=2)
@@ -132,10 +132,10 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         b13=Label(frame2_1,text='Suspect Gender :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b13.grid(row=2,column=4,padx=2,sticky=W,pady=2)
         frame3_2=Frame(frame2_1,bd=1,relief=RIDGE,bg='white',highlightbackground="grey", highlightthickness=1)
-        frame3_2.place(x=677,y=54,width=146,height=27)
-        b1313_male=Radiobutton(frame3_2, text='M',value='Male',font=("Arial",7,'bold'),bg='white')
+        frame3_2.place(x=677,y=56,width=146,height=30)
+        b1313_male=Radiobutton(frame3_2, text='M',value='Male',font=("Arial",10,'bold'),bg='white')
         b1313_male.grid(row=0,column=0,pady=0,padx=10,sticky=W)
-        b1313_female=Radiobutton(frame3_2, text='F',value='Female',font=("Arial",7,'bold'),bg='white')
+        b1313_female=Radiobutton(frame3_2, text='F',value='Female',font=("Arial",10,'bold'),bg='white')
         b1313_female.grid(row=0,column=1,pady=0,padx=10,sticky=W)
         
         
@@ -154,7 +154,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         b1515.grid(row=4, column=5, padx=2, pady=2, sticky=W)
         
         bf=Frame(frame2_1,bd=2,relief=RIDGE,bg='white')
-        bf.place(x=3,y=150,width=613,height=45)
+        bf.place(x=3,y=160,width=613,height=45)
         
         bt1=Button(bf,text='SAVE',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
         bt1.grid(row=0,column=0,padx=3,pady=3)
