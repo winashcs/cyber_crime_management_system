@@ -150,6 +150,18 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         b1515['menu'].configure(font=("Times New Roman", 10, 'bold'), bg='white')
         b1515.grid(row=4, column=5, padx=2, pady=2, sticky=W)
         
+        bf=Frame(frame2_1,bd=2,relief=RIDGE,bg='white')
+        bf.place(x=3,y=150,width=613,height=45)
+        
+        bt1=Button(bf,text='SAVE',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
+        bt1.grid(row=0,column=0,padx=3,pady=3)
+        bt2=Button(bf,text='UPDATE',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
+        bt2.grid(row=0,column=1,padx=3,pady=3)
+        bt3=Button(bf,text='DELETE',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
+        bt3.grid(row=0,column=2,padx=3,pady=3)
+        bt4=Button(bf,text='CLEAR',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
+        bt4.grid(row=0,column=3,padx=3,pady=3)
+        
         frame2_2=LabelFrame(frame2,bd=2,relief=RIDGE,text='Cybersecurity Alert Dashboard',font=("Garamond",15,'bold'),fg='dark green',bg='white')
         frame2_2.place(x=10,y=248,width=1316,height=238)
         
