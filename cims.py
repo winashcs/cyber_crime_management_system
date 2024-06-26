@@ -66,9 +66,9 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         b3.grid(row=2,column=0,padx=2,sticky=W,pady=2)
         frame3_1=Frame(frame2_1,bd=1,relief=RIDGE,bg='white',highlightbackground="grey", highlightthickness=1)
         frame3_1.place(x=120,y=56,width=146,height=30)
-        b33_male=Radiobutton(frame3_1, text='M',value='Male',font=("Arial",10,'bold'),bg='white')
+        b33_male=Radiobutton(frame3_1, text='M',value='male',font=("Arial",10,'bold'),bg='white')
         b33_male.grid(row=0,column=0,pady=0,padx=10,sticky=W)
-        b33_female=Radiobutton(frame3_1, text='F',value='Female',font=("Arial",10,'bold'),bg='white')
+        b33_female=Radiobutton(frame3_1, text='F',value='female',font=("Arial",10,'bold'),bg='white')
         b33_female.grid(row=0,column=1,pady=0,padx=10,sticky=W)
         
         b4=Label(frame2_1,text='Victim Details :',font=("Ebrima",10,'bold'),fg='black',bg='white')
