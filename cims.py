@@ -180,7 +180,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         sb.grid(row=0,column=0,padx=4,sticky=W)
         
         dd1=ttk.Combobox(frame2_2_1,font=("Georgia",9,'bold'),width=17,state='readonly')
-        dd1['value']=('Select Option','CASE ID','IP ADDRESS','STATUS')
+        dd1['value']=('Select Option','Case ID','IP address','Status')
         dd1.current(0)
         dd1.grid(row=0,column=1,padx=4,sticky=W)
         
@@ -206,6 +206,27 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         
         scroll_x.config(command=self.details_table.xview)
         scroll_y.config(command=self.details_table.yview)
+        
+        self.details_table.heading('1',text='Case ID')
+        self.details_table.heading('2',text='Victim Name')
+        self.details_table.heading('3',text='Victim Gender')
+        self.details_table.heading('4',text='Victim Details')
+        self.details_table.heading('5',text='Date of incident')
+        self.details_table.heading('6',text='Type of cybercrime')
+        self.details_table.heading('7',text='Type of cyberattack')
+        self.details_table.heading('8',text='Impact Assessment')
+        self.details_table.heading('9',text='IP address')
+        self.details_table.heading('10',text='Device Information')
+        self.details_table.heading('11',text='Related Incident')
+        self.details_table.heading('12',text='Suspect Name')
+        self.details_table.heading('13',text='Suspect Gender')
+        self.details_table.heading('14',text='Suspect Details')
+        self.details_table.heading('15',text='Status')
+        
+        self.details_table['show']='headings'
+        
+        self.details_table.pack(fill=BOTH,expand=1)
+
         
         
 if __name__=="__main__":
