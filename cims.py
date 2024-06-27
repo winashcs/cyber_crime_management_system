@@ -85,8 +85,10 @@ class CC: #i used CC here because CyberCrime will be a long keyword
             cal.pack(fill='both', expand=True)            
             def select_date():
                 selected_date = cal.get_date()
+                b55.configure(state='normal')
                 b55.delete(0, END)
                 b55.insert(0, selected_date)
+                b55.configure(state='readonly') 
                 top.destroy()            
             ok_button = ttk.Button(top, text="OK", command=select_date)
             ok_button.pack(pady=10)        
