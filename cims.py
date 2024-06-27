@@ -2,6 +2,7 @@ from tkinter import* # for creating graphic user interface
 from tkinter import ttk  # (themed tk) we use ttk for modern widgets like buttons, labels, and other GUI elements
 from PIL import Image,ImageTk # helps for image processing in gui
 from tkcalendar import Calendar # for date
+import mysql.connector
 
 class CC: #i used CC here because CyberCrime will be a long keyword
     def __init__(self,root):
@@ -324,6 +325,8 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.details_table.column('15',width=75)
         
         self.details_table.pack(fill=BOTH,expand=1)        
+        
+        
         
 if __name__=="__main__":
     root=Tk()
