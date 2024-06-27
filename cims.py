@@ -327,6 +327,8 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         
         self.details_table.pack(fill=BOTH,expand=1)     
         
+        self.get_data()
+        
     def save_data(self):
         if self.var_case_id.get()=="":   
             messagebox.showerror('Error','ALL ENTRIES ARE MANDATORY')
@@ -336,11 +338,23 @@ class CC: #i used CC here because CyberCrime will be a long keyword
                 my_cursor=con.cursor()
                 my_cursor.execute('insert into cybersecurity values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',(self.var_case_id.get(),self.var_victim_name.get(),self.var_victim_gender.get(),self.var_victim_details.get(),self.var_date_of_incident.get(),self.var_type_of_cybercrime.get(),self.var_type_of_cyberattack.get(),self.var_impact_assessment.get(),self.var_ip_address.get(),self.var_device_information.get(),self.var_related_incident.get(),self.var_suspect_name.get(),self.var_suspect_gender.get(),self.var_suspect_details.get(),self.var_status.get()))
                 con.commit()
+                self.get_data()
                 con.close()
                 messagebox.showinfo('Success','CYBERSECURITY ALERT SUCCESSFULLY DEPLOYED')
             except Exception as es:
                 messagebox.showerror('Error',f'Due to{str(es)}')
-        
+                
+    def get_data(self):
+        con=mysql.connector.connect(host='localhost',username='root',password='mysql',database='cims_data')
+        my_cursor=con.cursor()
+        my_cursor.execute('select * from cybersecurity')
+        data=my_cursor.fetchall()
+        if len(data)!=0:
+            self.details_table.delete(*self.details_table.get_children())
+            for i in data:
+                self.details_table.insert('',END,values=i)
+            con.commit()
+        con.close()
         
         
 if __name__=="__main__":
