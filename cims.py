@@ -225,7 +225,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         bf=Frame(frame2_1,bd=2,relief=RIDGE,bg='white')
         bf.place(x=3,y=160,width=613,height=45)
         
-        bt1=Button(bf,text='SAVE',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
+        bt1=Button(bf,command=self.save_data,text='SAVE',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
         bt1.grid(row=0,column=0,padx=3,pady=3)
         bt2=Button(bf,text='UPDATE',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
         bt2.grid(row=0,column=1,padx=3,pady=3)
@@ -327,7 +327,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         
         self.details_table.pack(fill=BOTH,expand=1)     
         
-    def add_data(self):
+    def save_data(self):
         if self.var_case_id.get()=="":   
             messagebox.showerror('Error','ALL ENTRIES ARE MANDATORY')
         else:
