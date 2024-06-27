@@ -219,6 +219,9 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         scroll_x.config(command=self.details_table.xview)
         scroll_y.config(command=self.details_table.yview)
         
+        style = ttk.Style()
+        style.configure("Treeview.Heading", font=('Impact',11))
+        
         self.details_table.heading('1',text='Case ID')
         self.details_table.heading('2',text='Victim Name')
         self.details_table.heading('3',text='Victim Gender')
@@ -237,21 +240,21 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         
         self.details_table['show']='headings'
         
-        self.details_table.column('1',width=55)
-        self.details_table.column('2',width=130)
-        self.details_table.column('3',width=90)
-        self.details_table.column('4',width=200)
-        self.details_table.column('5',width=95)
-        self.details_table.column('6',width=120)
-        self.details_table.column('7',width=130)
-        self.details_table.column('8',width=110)
-        self.details_table.column('9',width=110)
-        self.details_table.column('10',width=110)
-        self.details_table.column('11',width=95)
-        self.details_table.column('12',width=130)
-        self.details_table.column('13',width=90)
-        self.details_table.column('14',width=200)
-        self.details_table.column('15',width=55)
+        self.details_table.column('1',width=75)
+        self.details_table.column('2',width=150)
+        self.details_table.column('3',width=110)
+        self.details_table.column('4',width=220)
+        self.details_table.column('5',width=115)
+        self.details_table.column('6',width=140)
+        self.details_table.column('7',width=150)
+        self.details_table.column('8',width=150)
+        self.details_table.column('9',width=130)
+        self.details_table.column('10',width=130)
+        self.details_table.column('11',width=115)
+        self.details_table.column('12',width=150)
+        self.details_table.column('13',width=110)
+        self.details_table.column('14',width=220)
+        self.details_table.column('15',width=75)
         
         self.details_table.pack(fill=BOTH,expand=1)        
         
