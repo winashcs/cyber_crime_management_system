@@ -327,6 +327,8 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         
         self.details_table.pack(fill=BOTH,expand=1)     
         
+        self.details_table.bind("<ButtonRelease>",self.get_cursor)
+        
         self.get_data()
         
     def save_data(self):
@@ -355,6 +357,28 @@ class CC: #i used CC here because CyberCrime will be a long keyword
                 self.details_table.insert('',END,values=i)
             con.commit()
         con.close()
+        
+    def get_cursor(self,event=""):
+        cursur_row=self.details_table.focus()
+        content=self.details_table.item(cursur_row)
+        data=content['values']
+        self.var_case_id.set(data[0])
+        self.var_victim_name.set(data[1])
+        self.var_victim_gender.set(data[2])
+        self.var_victim_details.set(data[3])
+        self.var_date_of_incident.set(data[4])
+        self.var_type_of_cybercrime.set(data[5])
+        self.var_type_of_cyberattack.set(data[6])
+        self.var_impact_assessment.set(data[7])
+        self.var_ip_address.set(data[8])
+        self.var_device_information.set(data[9])
+        self.var_related_incident.set(data[10])
+        self.var_suspect_name.set(data[11])
+        self.var_suspect_gender.set(data[12])
+        self.var_suspect_details.set(data[13])
+        self.var_status.set(data[14])
+        
+        
         
         
 if __name__=="__main__":
