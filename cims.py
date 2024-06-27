@@ -2,7 +2,8 @@ from tkinter import* # for creating graphic user interface
 from tkinter import ttk  # (themed tk) we use ttk for modern widgets like buttons, labels, and other GUI elements
 from PIL import Image,ImageTk # helps for image processing in gui
 from tkcalendar import Calendar # for date
-import mysql.connector
+import mysql.connector # to connect to mysql
+from tkinter import messagebox # for displaying messages
 
 class CC: #i used CC here because CyberCrime will be a long keyword
     def __init__(self,root):
@@ -324,7 +325,21 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.details_table.column('14',width=220)
         self.details_table.column('15',width=75)
         
-        self.details_table.pack(fill=BOTH,expand=1)        
+        self.details_table.pack(fill=BOTH,expand=1)     
+        
+    def add_data(self):
+        if self.var_case_id.get()=="":   
+            messagebox.showerror('Error','ALL ENTRIES ARE MANDATORY')
+        else:
+            try:
+                con=mysql.connector.connect(host='localhost',username='root',password='mysql',database='cims_data')
+                my_cursor=con.cursor()
+                my_cursor.execute('insert into cybersecurity values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',(self.var_case_id.get(),self.var_victim_name.get(),self.var_victim_gender.get(),self.var_victim_details.get(),self.var_date_of_incident.get(),self.var_type_of_cybercrime.get(),self.var_type_of_cyberattack.get(),self.var_impact_assessment.get(),self.var_ip_address.get(),self.var_device_information.get(),self.var_related_incident.get(),self.var_suspect_name.get(),self.var_suspect_gender.get(),self.var_suspect_details.get(),self.var_status.get()))
+                con.commit()
+                con.close()
+                messagebox.showinfo('Success','CYBERSECURITY ALERT SUCCESSFULLY DEPLOYED')
+            except Exception as es:
+                messagebox.showerror('Error',f'Due to{str(es)}')
         
         
         
