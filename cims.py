@@ -359,8 +359,8 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         con.close()
         
     def get_cursor(self,event=""):
-        cursur_row=self.details_table.focus()
-        content=self.details_table.item(cursur_row)
+        cursor_row=self.details_table.focus()
+        content=self.details_table.item(cursor_row)
         data=content['values']
         self.var_case_id.set(data[0])
         self.var_victim_name.set(data[1])
