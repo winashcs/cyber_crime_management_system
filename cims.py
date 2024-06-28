@@ -8,10 +8,11 @@ from tkinter import messagebox # for displaying messages
 class CC: #i used CC here because CyberCrime will be a long keyword
     def __init__(self,root):
         self.root=root
-        self.root.geometry('1366x768+0+0')
+        self.root.geometry('1366x768+0+0') #This is my screen resolution
         self.root.title('Cybersecurity Incident Management System') 
         self.root.iconbitmap('images/icon.ico')
         
+        #variables created below for backend logics
         self.var_case_id=StringVar()
         self.var_victim_name=StringVar()
         self.var_victim_gender=StringVar()
@@ -26,38 +27,35 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.var_suspect_name=StringVar()
         self.var_suspect_gender=StringVar()
         self.var_suspect_details=StringVar()
-        self.var_status=StringVar()
+        self.var_status=StringVar()        
         
+        #Title and logos
         title=Label(self.root,text='Cybersecurity Incident Management System',font=('Brush Script MT',45,'bold'),bg='#006400',fg='#F5F5DC')
-        title.place(x=0,y=0,width=1366,height=70)
-        
+        title.place(x=0,y=0,width=1366,height=70)        
         logo1_open=Image.open('images/logo.png')
         logo1_open=logo1_open.resize((100,65), Image.LANCZOS)
         self.image_logo1=ImageTk.PhotoImage(logo1_open)
         self.logo1=Label(self.root,image=self.image_logo1)
-        self.logo1.place(x=123,y=3,width=100,height=65)
-        
+        self.logo1.place(x=123,y=3,width=100,height=65)        
         logo2_open=Image.open('images/logo.png')
         logo2_open=logo2_open.resize((100,65), Image.LANCZOS)
         self.image_logo2=ImageTk.PhotoImage(logo2_open)
         self.logo2=Label(self.root,image=self.image_logo2)
         self.logo2.place(x=1143,y=3,width=100,height=65)
         
+        #for imporving the overall design of gui we use some images
         frame1=Frame(self.root,bd=2,relief=RIDGE,bg='white')
-        frame1.place(x=0,y=70,width=1366,height=130)
-        
+        frame1.place(x=0,y=70,width=1366,height=130)        
         i1=Image.open('images/i1.jpg')
         i1=i1.resize((455,130), Image.LANCZOS)
         self.i11=ImageTk.PhotoImage(i1)
         self.i111=Label(frame1,image=self.i11)
-        self.i111.place(x=0,y=0,width=455,height=130)
-        
+        self.i111.place(x=0,y=0,width=455,height=130)        
         i2=Image.open('images/i3.jpg')
         i2=i2.resize((455,130), Image.LANCZOS)
         self.i22=ImageTk.PhotoImage(i2)
         self.i222=Label(frame1,image=self.i22)
-        self.i222.place(x=455,y=0,width=455,height=130)
-        
+        self.i222.place(x=455,y=0,width=455,height=130)        
         i3=Image.open('images/i1.jpg')
         i3=i3.resize((455,130), Image.LANCZOS)
         self.i33=ImageTk.PhotoImage(i3)
