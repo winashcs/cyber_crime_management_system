@@ -339,6 +339,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
             except Exception as es:
                 messagebox.showerror('Error',f'Due to {str(es)}')
                       
+    
     def delete_data(self):
         if self.var_case_id.get()=="" or self.var_case_id.get()=="" or self.var_victim_name.get()=="" or self.var_victim_gender.get()=="" or self.var_victim_details.get()=="" or self.var_date_of_incident.get()=="" or self.var_type_of_cybercrime.get()=="" or self.var_type_of_cyberattack.get()=="" or self.var_impact_assessment.get()=="" or self.var_ip_address.get()=="" or self.var_device_information.get()=="" or self.var_related_incident.get()=="" or self.var_suspect_name.get()=="" or self.var_suspect_gender.get()=="" or self.var_suspect_details.get()=="" or self.var_status.get()=="SELECT ▼":   
             messagebox.showerror('Error','ALL ENTRIES ARE MANDATORY')
