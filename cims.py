@@ -379,7 +379,8 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.var_suspect_details.set("")
         self.var_status.set("SELECT ▼")
         
-    
+    #this function searches a MySQL database using user-specified criteria
+    #presenting matching results in a table widget or handling errors as needed.
     def search_data(self):
         if self.var_1_search.get()=="":
             messagebox.showerror('Error','ALL ENTRIES ARE MANDATORY')                 
