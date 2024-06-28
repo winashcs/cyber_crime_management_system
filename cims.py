@@ -174,14 +174,15 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.i444=Label(frame2_1,image=self.i44)
         self.i444.place(x=840,y=-10,width=472,height=222)
         
+        #a search or display area has been implemented in the GUI to facilitate record retrieval and viewing
         frame2_2=LabelFrame(frame2,bd=2,relief=RIDGE,text='Cybersecurity Alert Dashboard',font=("Garamond",15,'bold'),fg='dark green',bg='white')
-        frame2_2.place(x=10,y=248,width=1316,height=238)
-        
+        frame2_2.place(x=10,y=248,width=1316,height=238)        
         frame2_2_1=LabelFrame(frame2_2,bd=2,relief=RIDGE,text='Search Record',font=("Lucida Sans Unicode",11,'bold'),fg='black',bg='white')
         frame2_2_1.place(x=0,y=0,width=1306,height=50)
         sb=Label(frame2_2_1,text='Search By',font=("Georgia",10,'bold'),bg='yellow',fg='black')
         sb.grid(row=0,column=0,padx=4,sticky=W)
         
+                
         design2=Image.open('images/design2.png')
         design2=design2.resize((200,35), Image.LANCZOS)
         self.design22=ImageTk.PhotoImage(design2)
