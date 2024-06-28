@@ -319,25 +319,50 @@ class CC: #i used CC here because CyberCrime will be a long keyword
     #this function updates data in MySQL after validation, 
     #confirming with the user before executing and displaying appropriate messages for success or errors.
     def update_data(self):
-        if self.var_case_id.get()=="" or self.var_case_id.get()=="" or self.var_victim_name.get()=="" or self.var_victim_gender.get()=="" or self.var_victim_details.get()=="" or self.var_date_of_incident.get()=="" or self.var_type_of_cybercrime.get()=="" or self.var_type_of_cyberattack.get()=="" or self.var_impact_assessment.get()=="" or self.var_ip_address.get()=="" or self.var_device_information.get()=="" or self.var_related_incident.get()=="" or self.var_suspect_name.get()=="" or self.var_suspect_gender.get()=="" or self.var_suspect_details.get()=="" or self.var_status.get()=="SELECT ▼":   
-            messagebox.showerror('Error','ALL ENTRIES ARE MANDATORY')
+        if (self.var_case_id.get() == "" or self.var_victim_name.get() == "" or 
+            self.var_victim_gender.get() == "" or self.var_victim_details.get() == "" or 
+            self.var_date_of_incident.get() == "" or self.var_type_of_cybercrime.get() == "" or 
+            self.var_type_of_cyberattack.get() == "" or self.var_impact_assessment.get() == "" or 
+            self.var_ip_address.get() == "" or self.var_device_information.get() == "" or 
+            self.var_related_incident.get() == "" or self.var_suspect_name.get() == "" or 
+            self.var_suspect_gender.get() == "" or self.var_suspect_details.get() == "" or 
+            self.var_status.get() == "SELECT ▼"):            
+                messagebox.showerror('Error', 'ALL ENTRIES ARE MANDATORY')
         else:
             try:
-                update=messagebox.askyesno('Update','Would you like to confirm UPDATING this record')
-                if update>0:
-                    con=mysql.connector.connect(host='localhost',username='root',password='mysql',database='cims_data')
-                    my_cursor=con.cursor()
-                    my_cursor.execute('update cybersecurity set Victim_Name=%s,Victim_Gender=%s,Victim_Details=%s,Date_of_incident=%s,Type_of_cybercrime=%s,Type_of_cyberattack=%s,Impact_Assessment=%s,IP_address=%s,Device_Information=%s,Related_Incident=%s,Suspect_Name=%s,Suspect_Gender=%s,Suspect_Details=%s,Status=%s,Case_ID=%s',(self.var_victim_name.get(),self.var_victim_gender.get(),self.var_victim_details.get(),self.var_date_of_incident.get(),self.var_type_of_cybercrime.get(),self.var_type_of_cyberattack.get(),self.var_impact_assessment.get(),self.var_ip_address.get(),self.var_device_information.get(),self.var_related_incident.get(),self.var_suspect_name.get(),self.var_suspect_gender.get(),self.var_suspect_details.get(),self.var_status.get(),self.var_case_id.get()))
+                update = messagebox.askyesno('Update', 'Would you like to confirm UPDATING this record')
+                if update:
+                    con = mysql.connector.connect(host='localhost', username='root', password='mysql', database='cims_data')
+                    my_cursor = con.cursor()                 
+                    my_cursor.execute('SELECT Case_ID FROM cybersecurity WHERE Case_ID = %s', (self.var_case_id.get(),))
+                    existing_case = my_cursor.fetchone()                    
+                    if existing_case:
+                        my_cursor.execute('UPDATE cybersecurity SET Victim_Name=%s, Victim_Gender=%s, Victim_Details=%s, '
+                                        'Date_of_incident=%s, Type_of_cybercrime=%s, Type_of_cyberattack=%s, '
+                                        'Impact_Assessment=%s, IP_address=%s, Device_Information=%s, '
+                                        'Related_Incident=%s, Suspect_Name=%s, Suspect_Gender=%s, '
+                                        'Suspect_Details=%s, Status=%s WHERE Case_ID=%s',
+                                        (self.var_victim_name.get(), self.var_victim_gender.get(), 
+                                        self.var_victim_details.get(), self.var_date_of_incident.get(), 
+                                        self.var_type_of_cybercrime.get(), self.var_type_of_cyberattack.get(), 
+                                        self.var_impact_assessment.get(), self.var_ip_address.get(), 
+                                        self.var_device_information.get(), self.var_related_incident.get(), 
+                                        self.var_suspect_name.get(), self.var_suspect_gender.get(), 
+                                        self.var_suspect_details.get(), self.var_status.get(), 
+                                        self.var_case_id.get()))
+                    else:
+                        messagebox.showerror('Error', 'Case ID does not exist for updating.')
+                        return                    
+                    con.commit()
+                    self.get_data()
+                    self.clear_data()
+                    con.close()
+                    messagebox.showinfo('Success', 'CYBERSECURITY ALERT SUCCESSFULLY UPDATED')                    
                 else:
-                    if not update:
-                        return
-                con.commit()
-                self.get_data()
-                self.clear_data()
-                con.close()
-                messagebox.showinfo('Success','CYBERSECURITY ALERT SUCCESSFULLY UPDATED')
+                    return                
             except Exception as es:
-                messagebox.showerror('Error',f'Due to {str(es)}')
+                messagebox.showerror('Error', f'Due to {str(es)}')
+
                       
     #this function deletes a MySQL record after verifying all necessary fields are filled
     #confirming with the user, it then displays messages indicating success or errors based on the outcome
