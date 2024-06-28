@@ -182,7 +182,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         bt2.grid(row=0,column=1,padx=3,pady=3)
         bt3=Button(bf,command=self.delete_data,text='DELETE',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
         bt3.grid(row=0,column=2,padx=3,pady=3)
-        bt4=Button(bf,text='CLEAR',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
+        bt4=Button(bf,command=self.clear_data,text='CLEAR',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
         bt4.grid(row=0,column=3,padx=3,pady=3)
         
         i4=Image.open('images/i2.jpg')
@@ -292,6 +292,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
                 my_cursor.execute('insert into cybersecurity values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',(self.var_case_id.get(),self.var_victim_name.get(),self.var_victim_gender.get(),self.var_victim_details.get(),self.var_date_of_incident.get(),self.var_type_of_cybercrime.get(),self.var_type_of_cyberattack.get(),self.var_impact_assessment.get(),self.var_ip_address.get(),self.var_device_information.get(),self.var_related_incident.get(),self.var_suspect_name.get(),self.var_suspect_gender.get(),self.var_suspect_details.get(),self.var_status.get()))
                 con.commit()
                 self.get_data()
+                self.clear_data()
                 con.close()
                 messagebox.showinfo('Success','CYBERSECURITY ALERT SUCCESSFULLY DEPLOYED')
             except Exception as es:
@@ -344,6 +345,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
                         return
                 con.commit()
                 self.get_data()
+                self.clear_data()
                 con.close()
                 messagebox.showinfo('Success','CYBERSECURITY ALERT SUCCESSFULLY UPDATED')
             except Exception as es:
@@ -366,10 +368,28 @@ class CC: #i used CC here because CyberCrime will be a long keyword
                         return
                 con.commit()
                 self.get_data()
+                self.clear_data()
                 con.close()
                 messagebox.showinfo('Success','CYBERSECURITY ALERT SUCCESSFULLY DESTROYED')
             except Exception as es:
                 messagebox.showerror('Error',f'Due to{str(es)}')
+                
+    def clear_data(self):
+        self.var_case_id.set("")
+        self.var_victim_name.set("")
+        self.var_victim_gender.set("")
+        self.var_victim_details.set("")
+        self.var_date_of_incident.set("")
+        self.var_type_of_cybercrime.set("")
+        self.var_type_of_cyberattack.set("")
+        self.var_impact_assessment.set("")
+        self.var_ip_address.set("")
+        self.var_device_information.set("")
+        self.var_related_incident.set("")
+        self.var_suspect_name.set("")
+        self.var_suspect_gender.set("")
+        self.var_suspect_details.set("")
+        self.var_status.set("SELECT ▼")
         
         
         
