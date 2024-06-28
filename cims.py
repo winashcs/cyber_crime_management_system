@@ -182,13 +182,13 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         sb=Label(frame2_2_1,text='Search By',font=("Georgia",10,'bold'),bg='yellow',fg='black')
         sb.grid(row=0,column=0,padx=4,sticky=W)
         
-                
+        '''once again two images has been incorporated on the right side 
+        of the screen to enhance the GUI and eliminate its vacant appearance'''
         design2=Image.open('images/design2.png')
         design2=design2.resize((200,35), Image.LANCZOS)
         self.design22=ImageTk.PhotoImage(design2)
         self.design222=Label(frame2_2_1,image=self.design22)
-        self.design222.place(x=950,y=-8,width=200,height=35)
-        
+        self.design222.place(x=950,y=-8,width=200,height=35)        
         design1=Image.open('images/design1.png')
         design1=design1.resize((40,29), Image.LANCZOS)
         self.design11=ImageTk.PhotoImage(design1)
