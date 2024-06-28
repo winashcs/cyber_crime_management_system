@@ -70,34 +70,16 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         frame2_1=LabelFrame(frame2,bd=2,relief=RIDGE,text='Cybersecurity Alerts',font=("Garamond",15,'bold'),fg='dark green',bg='white')
         frame2_1.place(x=10,y=10,width=1316,height=238)
         
-        #def set_placeholder(entry, placeholder_text):
-        #    entry.insert(0, placeholder_text)
-        #    entry.configure(font=("Times New Roman", 10, 'bold'), foreground='grey')
-
-        #def on_entry_click(event, entry, placeholder_text):
-        #    if entry.get() == placeholder_text:
-        #        entry.delete(0, "end")
-        #        entry.configure(font=("Times New Roman", 10, 'bold'), foreground='black')
-
-        #def on_focus_out(event, entry, placeholder_text):
-        #    if entry.get() == "":
-        #        set_placeholder(entry, placeholder_text)
-        
         b1=Label(frame2_1,text='Case ID :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b1.grid(row=0,column=0,padx=2,sticky=W,pady=2)
-        b11=ttk.Entry(frame2_1,textvariable=self.var_case_id,width=20,font=("Times New Roman",10,'bold'))
-        #set_placeholder(b11, "0000")
+        b11=ttk.Entry(frame2_1,textvariable=self.var_case_id,width=20,font=("Times New Roman",10,'bold'))        
         b11.grid(row=0,column=1,padx=2,sticky=W,pady=2)
-        #b11.bind("<FocusIn>", lambda event, entry=b11, placeholder_text="0000": on_entry_click(event, entry, placeholder_text))
-        #b11.bind("<FocusOut>", lambda event, entry=b11, placeholder_text="0000": on_focus_out(event, entry, placeholder_text))
         
         b2=Label(frame2_1,text='Victim Name :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b2.grid(row=1,column=0,padx=2,sticky=W,pady=2)
-        b22=ttk.Entry(frame2_1,textvariable=self.var_victim_name,width=20,font=("Times New Roman",10,'bold'))
-        #set_placeholder(b22, "Enter Victim Name")
+        b22=ttk.Entry(frame2_1,textvariable=self.var_victim_name,width=20,font=("Times New Roman",10,'bold'))        
         b22.grid(row=1,column=1,padx=2,sticky=W,pady=2)
-        #b22.bind("<FocusIn>", lambda event, entry=b22, placeholder_text="Enter Victim Name": on_entry_click(event, entry, placeholder_text))
-        #b22.bind("<FocusOut>", lambda event, entry=b22, placeholder_text="Enter Victim Name": on_focus_out(event, entry, placeholder_text))
+        
         
         b3=Label(frame2_1,text='Victim Gender :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b3.grid(row=2,column=0,padx=2,sticky=W,pady=2)
@@ -110,11 +92,8 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         
         b4=Label(frame2_1,text='Victim Details :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b4.grid(row=3,column=0,padx=2,sticky=W,pady=10)
-        b44=ttk.Entry(frame2_1,textvariable=self.var_victim_details,width=20,font=("Times New Roman",10,'bold'))
-        #set_placeholder(b44, "Address,Phone number")
+        b44=ttk.Entry(frame2_1,textvariable=self.var_victim_details,width=20,font=("Times New Roman",10,'bold'))        
         b44.grid(row=3,column=1,padx=2,sticky=W,pady=3)
-        #b44.bind("<FocusIn>", lambda event, entry=b44, placeholder_text="Address,Phone number": on_entry_click(event, entry, placeholder_text))
-        #b44.bind("<FocusOut>", lambda event, entry=b44, placeholder_text="Address,Phone number": on_focus_out(event, entry, placeholder_text))        
         
         b5=Label(frame2_1,text='Date of incident :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b5.grid(row=4,column=0,padx=2,sticky=W,pady=2)
@@ -133,68 +112,44 @@ class CC: #i used CC here because CyberCrime will be a long keyword
             ok_button = ttk.Button(top, text="OK", command=select_date)
             ok_button.pack(pady=10)        
         b55 = ttk.Entry(frame2_1,textvariable=self.var_date_of_incident,width=20, font=("Times New Roman", 10, 'bold'))
-        #set_placeholder(b55, "mm/dd/yy")
         b55.grid(row=4, column=1, padx=2, sticky=W, pady=2)
         b55.bind('<Button-1>', show_calendar)
-        #b55.bind("<FocusIn>", lambda event, entry=b55, placeholder_text="mm/dd/yy": on_entry_click(event, entry, placeholder_text))
-        #b55.bind("<FocusOut>", lambda event, entry=b55, placeholder_text="mm/dd/yy": on_focus_out(event, entry, placeholder_text))
         
         b6=Label(frame2_1,text='Type of cybercrime :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b6.grid(row=0,column=2,padx=2,sticky=W,pady=2)
         b66=ttk.Entry(frame2_1,textvariable=self.var_type_of_cybercrime,width=20,font=("Times New Roman",10,'bold'))
-        #set_placeholder(b66, "Financial, Espionage . . . . .")
         b66.grid(row=0,column=3,padx=2,sticky=W,pady=2)
-        #b66.bind("<FocusIn>", lambda event, entry=b66, placeholder_text="Financial, Espionage . . . . .": on_entry_click(event, entry, placeholder_text))
-        #b66.bind("<FocusOut>", lambda event, entry=b66, placeholder_text="Financial, Espionage . . . . .": on_focus_out(event, entry, placeholder_text))
         
         b7=Label(frame2_1,text='Type of cyberattack :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b7.grid(row=1,column=2,padx=2,sticky=W,pady=2)
         b77=ttk.Entry(frame2_1,textvariable=self.var_type_of_cyberattack,width=20,font=("Times New Roman",10,'bold'))
-        #set_placeholder(b77, "DOS, MITM, Zero-Day . . .")
         b77.grid(row=1,column=3,padx=2,sticky=W,pady=2)
-        #b77.bind("<FocusIn>", lambda event, entry=b77, placeholder_text="DOS, MITM, Zero-Day . . .": on_entry_click(event, entry, placeholder_text))
-        #b77.bind("<FocusOut>", lambda event, entry=b77, placeholder_text="DOS, MITM, Zero-Day . . .": on_focus_out(event, entry, placeholder_text))
         
         b8=Label(frame2_1,text='Impact Assessment :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b8.grid(row=2,column=2,padx=2,sticky=W,pady=2)
         b88=ttk.Entry(frame2_1,textvariable=self.var_impact_assessment,width=20,font=("Times New Roman",10,'bold'))
-        #set_placeholder(b88, "Data loss, Disruption . . . . ")
         b88.grid(row=2,column=3,padx=2,sticky=W,pady=2)
-        #b88.bind("<FocusIn>", lambda event, entry=b88, placeholder_text="Data loss, Disruption . . . . ": on_entry_click(event, entry, placeholder_text))
-        #b88.bind("<FocusOut>", lambda event, entry=b88, placeholder_text="Data loss, Disruption . . . . ": on_focus_out(event, entry, placeholder_text))
         
         b9=Label(frame2_1,text='IP address :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b9.grid(row=3,column=2,padx=2,sticky=W,pady=2)
         b99=ttk.Entry(frame2_1,textvariable=self.var_ip_address,width=20,font=("Times New Roman",10,'bold'))
-        #set_placeholder(b99, "192.0. 2.146")
         b99.grid(row=3,column=3,padx=2,sticky=W,pady=2)
-        #b99.bind("<FocusIn>", lambda event, entry=b99, placeholder_text="192.0. 2.146": on_entry_click(event, entry, placeholder_text))
-        #b99.bind("<FocusOut>", lambda event, entry=b99, placeholder_text="192.0. 2.146": on_focus_out(event, entry, placeholder_text))
-        
+
         b10=Label(frame2_1,text='Device Information :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b10.grid(row=4,column=2,padx=2,sticky=W,pady=2)
         b1010=ttk.Entry(frame2_1,textvariable=self.var_device_information,width=20,font=("Times New Roman",10,'bold'))
-        #set_placeholder(b1010, "Mobile phones, Servers . . . .")
         b1010.grid(row=4,column=3,padx=2,sticky=W,pady=2)
-        #b1010.bind("<FocusIn>", lambda event, entry=b1010, placeholder_text="Mobile phones, Servers . . . .": on_entry_click(event, entry, placeholder_text))
-        #b1010.bind("<FocusOut>", lambda event, entry=b1010, placeholder_text="Mobile phones, Servers . . . .": on_focus_out(event, entry, placeholder_text))
-        
+    
         b11=Label(frame2_1,text='Related Incident :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b11.grid(row=0,column=4,padx=2,sticky=W,pady=2)
         b1111=ttk.Entry(frame2_1,textvariable=self.var_related_incident,width=20,font=("Times New Roman",10,'bold'))
-        #set_placeholder(b1111, "Enter Case ID")
         b1111.grid(row=0,column=5,padx=2,sticky=W,pady=2)
-        #b1111.bind("<FocusIn>", lambda event, entry=b1111, placeholder_text="Enter Case ID": on_entry_click(event, entry, placeholder_text))
-        #b1111.bind("<FocusOut>", lambda event, entry=b1111, placeholder_text="Enter Case ID": on_focus_out(event, entry, placeholder_text))
         
         b12=Label(frame2_1,text='Suspect Name :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b12.grid(row=1,column=4,padx=2,sticky=W,pady=2)
         b1212=ttk.Entry(frame2_1,textvariable=self.var_suspect_name,width=20,font=("Times New Roman",10,'bold'))
-        #set_placeholder(b1212, "Enter Suspect Name")
         b1212.grid(row=1,column=5,padx=2,sticky=W,pady=2)
-        #b1212.bind("<FocusIn>", lambda event, entry=b1212, placeholder_text="Enter Suspect Name": on_entry_click(event, entry, placeholder_text))
-        #b1212.bind("<FocusOut>", lambda event, entry=b1212, placeholder_text="Enter Suspect Name": on_focus_out(event, entry, placeholder_text))
-        
+
         b13=Label(frame2_1,text='Suspect Gender :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b13.grid(row=2,column=4,padx=2,sticky=W,pady=2)
         frame3_2=Frame(frame2_1,bd=1,relief=RIDGE,bg='white',highlightbackground="grey", highlightthickness=1)
@@ -207,11 +162,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         b14=Label(frame2_1,text='Suspect Details :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b14.grid(row=3,column=4,padx=2,sticky=W,pady=2)
         b1414=ttk.Entry(frame2_1,textvariable=self.var_suspect_details,width=20,font=("Times New Roman",10,'bold'))
-        #set_placeholder(b1414, "Address,Phone number")
         b1414.grid(row=3,column=5,padx=2,sticky=W,pady=2)
-        #b1414.bind("<FocusIn>", lambda event, entry=b1414, placeholder_text="Address,Phone number": on_entry_click(event, entry, placeholder_text))
-        #b1414.bind("<FocusOut>", lambda event, entry=b1414, placeholder_text="Address,Phone number": on_focus_out(event, entry, placeholder_text)) 
-        
         
         b15=Label(frame2_1,text='Status :',font=("Ebrima",10,'bold'),fg='black',bg='white')
         b15.grid(row=4,column=4,padx=2,sticky=W,pady=2)
