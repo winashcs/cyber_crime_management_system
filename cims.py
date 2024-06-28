@@ -281,7 +281,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
             except Exception as es:
                 messagebox.showerror('Error',f'Due to {str(es)}')
                 
-    
+    #this function is created for fetching all the data form MySQL
     def get_data(self):
         con=mysql.connector.connect(host='localhost',username='root',password='mysql',database='cims_data')
         my_cursor=con.cursor()
