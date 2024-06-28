@@ -398,8 +398,9 @@ class CC: #i used CC here because CyberCrime will be a long keyword
             try:
                 con=mysql.connector.connect(host='localhost',username='root',password='mysql',database='cims_data')
                 my_cursor=con.cursor()
-                my_cursor.execute('select * from cybersecurity where ' +str(self.var_1_search.get())+" LIKE'%"+str(self.var_2_search.get()+"%'")) 
-                rows=my_cursor.fetchall
+                sql = 'SELECT * FROM cybersecurity WHERE {} LIKE %s'.format(self.var_1_search.get())
+                my_cursor.execute(sql, ('%' + self.var_2_search.get() + '%',))
+                rows=my_cursor.fetchall()
                 if len(rows)!=0:
                     self.details_table.delete(*self.details_table.get_children())
                     for i in rows:
