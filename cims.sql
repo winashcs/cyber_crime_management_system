@@ -25,22 +25,22 @@ DROP TABLE IF EXISTS `cybersecurity`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cybersecurity` (
-  `Case ID` varchar(45) NOT NULL,
-  `Victim Name` varchar(45) DEFAULT NULL,
-  `Victim Gender` varchar(45) DEFAULT NULL,
-  `Victim Details` varchar(45) DEFAULT NULL,
-  `Date of incident` varchar(45) DEFAULT NULL,
-  `Type of cybercrime` varchar(45) DEFAULT NULL,
-  `Type of cyberattack` varchar(45) DEFAULT NULL,
-  `Impact Assessment` varchar(45) DEFAULT NULL,
-  `IP address` varchar(45) DEFAULT NULL,
-  `Device Information` varchar(45) DEFAULT NULL,
-  `Related Incident` varchar(45) DEFAULT NULL,
-  `Suspect Name` varchar(45) DEFAULT NULL,
-  `Suspect Gender` varchar(45) DEFAULT NULL,
-  `Suspect Details` varchar(45) DEFAULT NULL,
+  `Case_ID` varchar(45) NOT NULL,
+  `Victim_Name` varchar(45) DEFAULT NULL,
+  `Victim_Gender` varchar(45) DEFAULT NULL,
+  `Victim_Details` varchar(45) DEFAULT NULL,
+  `Date_of_incident` varchar(45) DEFAULT NULL,
+  `Type_of_cybercrime` varchar(45) DEFAULT NULL,
+  `Type_of_cyberattack` varchar(45) DEFAULT NULL,
+  `Impact_Assessment` varchar(45) DEFAULT NULL,
+  `IP_address` varchar(45) DEFAULT NULL,
+  `Device_Information` varchar(45) DEFAULT NULL,
+  `Related_Incident` varchar(45) DEFAULT NULL,
+  `Suspect_Name` varchar(45) DEFAULT NULL,
+  `Suspect_Gender` varchar(45) DEFAULT NULL,
+  `Suspect_Details` varchar(45) DEFAULT NULL,
   `Status` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`Case ID`)
+  PRIMARY KEY (`Case_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
