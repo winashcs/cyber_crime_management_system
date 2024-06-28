@@ -222,9 +222,9 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         scroll_x.config(command=self.details_table.xview)
         scroll_y.config(command=self.details_table.yview)
         
+        #various column names have been designated for the table, each with appropriate widths specified
         style = ttk.Style()
-        style.configure("Treeview.Heading", font=('Ebrima',10,'bold'))
-        
+        style.configure("Treeview.Heading", font=('Ebrima',10,'bold'))        
         self.details_table.heading('1',text='Case ID')
         self.details_table.heading('2',text='Victim Name')
         self.details_table.heading('3',text='Victim Gender')
@@ -239,10 +239,8 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.details_table.heading('12',text='Suspect Name')
         self.details_table.heading('13',text='Suspect Gender')
         self.details_table.heading('14',text='Suspect Details')
-        self.details_table.heading('15',text='Status')
-        
-        self.details_table['show']='headings'
-        
+        self.details_table.heading('15',text='Status')        
+        self.details_table['show']='headings'        
         self.details_table.column('1',width=75)
         self.details_table.column('2',width=150)
         self.details_table.column('3',width=110)
@@ -257,12 +255,11 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.details_table.column('12',width=150)
         self.details_table.column('13',width=130)
         self.details_table.column('14',width=220)
-        self.details_table.column('15',width=75)
+        self.details_table.column('15',width=75)        
+        self.details_table.pack(fill=BOTH,expand=1)
+            
         
-        self.details_table.pack(fill=BOTH,expand=1)     
-        
-        self.details_table.bind("<ButtonRelease>",self.get_cursor)
-        
+        self.details_table.bind("<ButtonRelease>",self.get_cursor)        
         self.get_data()
         
     def save_data(self):
