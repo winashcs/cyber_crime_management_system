@@ -174,7 +174,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.i444=Label(frame2_1,image=self.i44)
         self.i444.place(x=840,y=-10,width=472,height=222)
         
-        #a search or display area has been implemented in the GUI to facilitate record retrieval and viewing
+        #search and display area has been implemented in the GUI to facilitate record retrieval and viewing
         frame2_2=LabelFrame(frame2,bd=2,relief=RIDGE,text='Cybersecurity Alert Dashboard',font=("Garamond",15,'bold'),fg='dark green',bg='white')
         frame2_2.place(x=10,y=248,width=1316,height=238)        
         frame2_2_1=LabelFrame(frame2_2,bd=2,relief=RIDGE,text='Search Record',font=("Lucida Sans Unicode",11,'bold'),fg='black',bg='white')
@@ -195,19 +195,18 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.design111=Label(frame2_2_1,image=self.design11)
         self.design111.place(x=1047,y=-5,width=40,height=29)        
         
+        #the search options have been set up, you can search by Case ID, IP address, or status or you can see
+        #all the records by using show all button
         self.var_1_search=StringVar()        
         dd1=ttk.Combobox(frame2_2_1,textvariable=self.var_1_search,font=("Georgia",9,'bold'),width=17,state='readonly')
         dd1['value']=('Select Option','Case_ID','IP_address','Status')
         dd1.current(0)
-        dd1.grid(row=0,column=1,padx=4,sticky=W)
-        
+        dd1.grid(row=0,column=1,padx=4,sticky=W)        
         self.var_2_search=StringVar()
         searchtxt=ttk.Entry(frame2_2_1,textvariable=self.var_2_search,width=17,font=("Georgia",9,'bold'))
-        searchtxt.grid(row=0,column=2,padx=4,sticky=W)
-        
+        searchtxt.grid(row=0,column=2,padx=4,sticky=W)        
         searchbn=Button(frame2_2_1,command=self.search_data,text='SEARCH',font=("Georgia",9,'bold'),bg='#fee01c',width=17,fg='black')
-        searchbn.grid(row=0,column=3,padx=4,sticky=W)
-        
+        searchbn.grid(row=0,column=3,padx=4,sticky=W)        
         all1=Button(frame2_2_1,command=self.get_data,text='SHOW ALL',font=("Georgia",9,'bold'),bg='#fee01c',width=17,fg='black')
         all1.grid(row=0,column=4,padx=4,sticky=W)
         
