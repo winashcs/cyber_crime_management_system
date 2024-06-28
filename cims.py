@@ -400,7 +400,8 @@ class CC: #i used CC here because CyberCrime will be a long keyword
             except Exception as es:
                 messagebox.showerror('Error',f'Due to {str(es)}')                      
                               
-
+#this code initializes a tkinter application
+#creates an instance of the CC class, and starts the main event loop for GUI interaction.
 if __name__=="__main__":
     root=Tk()
     obj=CC(root)
