@@ -209,20 +209,22 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         design1=design1.resize((40,29), Image.LANCZOS)
         self.design11=ImageTk.PhotoImage(design1)
         self.design111=Label(frame2_2_1,image=self.design11)
-        self.design111.place(x=1047,y=-5,width=40,height=29)
+        self.design111.place(x=1047,y=-5,width=40,height=29)        
         
-        dd1=ttk.Combobox(frame2_2_1,font=("Georgia",9,'bold'),width=17,state='readonly')
+        self.var_1_search=StringVar()        
+        dd1=ttk.Combobox(frame2_2_1,textvariable=self.var_1_search,font=("Georgia",9,'bold'),width=17,state='readonly')
         dd1['value']=('Select Option','Case_ID','IP_address','Status')
         dd1.current(0)
         dd1.grid(row=0,column=1,padx=4,sticky=W)
         
-        searchtxt=ttk.Entry(frame2_2_1,width=17,font=("Georgia",9,'bold'))
+        self.var_2_search=StringVar()
+        searchtxt=ttk.Entry(frame2_2_1,textvariable=self.var_2_search,width=17,font=("Georgia",9,'bold'))
         searchtxt.grid(row=0,column=2,padx=4,sticky=W)
         
-        searchbn=Button(frame2_2_1,text='SEARCH',font=("Georgia",9,'bold'),bg='#fee01c',width=17,fg='black')
+        searchbn=Button(frame2_2_1,command=self.search_data,text='SEARCH',font=("Georgia",9,'bold'),bg='#fee01c',width=17,fg='black')
         searchbn.grid(row=0,column=3,padx=4,sticky=W)
         
-        all1=Button(frame2_2_1,text='SHOW ALL',font=("Georgia",9,'bold'),bg='#fee01c',width=17,fg='black')
+        all1=Button(frame2_2_1,command=self.get_data,text='SHOW ALL',font=("Georgia",9,'bold'),bg='#fee01c',width=17,fg='black')
         all1.grid(row=0,column=4,padx=4,sticky=W)
         
         table_frame=Frame(frame2_2,bd=2,relief=RIDGE)
@@ -296,7 +298,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
                 con.close()
                 messagebox.showinfo('Success','CYBERSECURITY ALERT SUCCESSFULLY DEPLOYED')
             except Exception as es:
-                messagebox.showerror('Error',f'Due to{str(es)}')
+                messagebox.showerror('Error',f'Due to {str(es)}')
                 
     def get_data(self):
         con=mysql.connector.connect(host='localhost',username='root',password='mysql',database='cims_data')
@@ -349,7 +351,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
                 con.close()
                 messagebox.showinfo('Success','CYBERSECURITY ALERT SUCCESSFULLY UPDATED')
             except Exception as es:
-                messagebox.showerror('Error',f'Due to{str(es)}')
+                messagebox.showerror('Error',f'Due to {str(es)}')
                       
     def delete_data(self):
         if self.var_case_id.get()=="" or self.var_case_id.get()=="" or self.var_victim_name.get()=="" or self.var_victim_gender.get()=="" or self.var_victim_details.get()=="" or self.var_date_of_incident.get()=="" or self.var_type_of_cybercrime.get()=="" or self.var_type_of_cyberattack.get()=="" or self.var_impact_assessment.get()=="" or self.var_ip_address.get()=="" or self.var_device_information.get()=="" or self.var_related_incident.get()=="" or self.var_suspect_name.get()=="" or self.var_suspect_gender.get()=="" or self.var_suspect_details.get()=="" or self.var_status.get()=="SELECT ▼":   
@@ -360,8 +362,6 @@ class CC: #i used CC here because CyberCrime will be a long keyword
                 if delete>0:
                     con=mysql.connector.connect(host='localhost',username='root',password='mysql',database='cims_data')
                     my_cursor=con.cursor()
-                    #sql='delete from cybersecurity where Case_ID=%s'
-                    #value=(self.var_case_id.get(),)
                     my_cursor.execute('delete from cybersecurity where Case_ID=%s',(self.var_case_id.get(),))
                 else:
                     if not delete:
@@ -372,7 +372,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
                 con.close()
                 messagebox.showinfo('Success','CYBERSECURITY ALERT SUCCESSFULLY DESTROYED')
             except Exception as es:
-                messagebox.showerror('Error',f'Due to{str(es)}')
+                messagebox.showerror('Error',f'Due to {str(es)}')
                 
     def clear_data(self):
         self.var_case_id.set("")
@@ -391,10 +391,25 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.var_suspect_details.set("")
         self.var_status.set("SELECT ▼")
         
-        
-        
-        
-        
+    def search_data(self):
+        if self.var_1_search.get()=="":
+            messagebox.showerror('Error','ALL ENTRIES ARE MANDATORY')                 
+        else:
+            try:
+                con=mysql.connector.connect(host='localhost',username='root',password='mysql',database='cims_data')
+                my_cursor=con.cursor()
+                my_cursor.execute('select * from cybersecurity where ' +str(self.var_1_search.get())+" LIKE'%"+str(self.var_2_search.get()+"%'")) 
+                rows=my_cursor.fetchall
+                if len(rows)!=0:
+                    self.details_table.delete(*self.details_table.get_children())
+                    for i in rows:
+                        self.details_table.insert('',END,values=i)
+                con.commit()
+                con.close()
+            except Exception as es:
+                messagebox.showerror('Error',f'Due to {str(es)}')                      
+                              
+
 if __name__=="__main__":
     root=Tk()
     obj=CC(root)
