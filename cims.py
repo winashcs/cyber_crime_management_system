@@ -180,7 +180,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         bt1.grid(row=0,column=0,padx=3,pady=3)
         bt2=Button(bf,command=self.update_data,text='UPDATE',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
         bt2.grid(row=0,column=1,padx=3,pady=3)
-        bt3=Button(bf,text='DELETE',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
+        bt3=Button(bf,command=self.delete_data,text='DELETE',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
         bt3.grid(row=0,column=2,padx=3,pady=3)
         bt4=Button(bf,text='CLEAR',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
         bt4.grid(row=0,column=3,padx=3,pady=3)
@@ -334,7 +334,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
             messagebox.showerror('Error','ALL ENTRIES ARE MANDATORY')
         else:
             try:
-                update=messagebox.askyesno('Update','Would you like to confirm updating this record')
+                update=messagebox.askyesno('Update','Would you like to confirm UPDATING this record')
                 if update>0:
                     con=mysql.connector.connect(host='localhost',username='root',password='mysql',database='cims_data')
                     my_cursor=con.cursor()
@@ -349,6 +349,27 @@ class CC: #i used CC here because CyberCrime will be a long keyword
             except Exception as es:
                 messagebox.showerror('Error',f'Due to{str(es)}')
                       
+    def delete_data(self):
+        if self.var_case_id.get()=="" or self.var_case_id.get()=="" or self.var_victim_name.get()=="" or self.var_victim_gender.get()=="" or self.var_victim_details.get()=="" or self.var_date_of_incident.get()=="" or self.var_type_of_cybercrime.get()=="" or self.var_type_of_cyberattack.get()=="" or self.var_impact_assessment.get()=="" or self.var_ip_address.get()=="" or self.var_device_information.get()=="" or self.var_related_incident.get()=="" or self.var_suspect_name.get()=="" or self.var_suspect_gender.get()=="" or self.var_suspect_details.get()=="" or self.var_status.get()=="SELECT ▼":   
+            messagebox.showerror('Error','ALL ENTRIES ARE MANDATORY')
+        else:
+            try:
+                delete=messagebox.askyesno('Delete','Would you like to confirm DELETING this record')
+                if delete>0:
+                    con=mysql.connector.connect(host='localhost',username='root',password='mysql',database='cims_data')
+                    my_cursor=con.cursor()
+                    #sql='delete from cybersecurity where Case_ID=%s'
+                    #value=(self.var_case_id.get(),)
+                    my_cursor.execute('delete from cybersecurity where Case_ID=%s',(self.var_case_id.get(),))
+                else:
+                    if not delete:
+                        return
+                con.commit()
+                self.get_data()
+                con.close()
+                messagebox.showinfo('Success','CYBERSECURITY ALERT SUCCESSFULLY DESTROYED')
+            except Exception as es:
+                messagebox.showerror('Error',f'Due to{str(es)}')
         
         
         
