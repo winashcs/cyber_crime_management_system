@@ -155,9 +155,9 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         b1515['menu'].configure(font=("Times New Roman", 10, 'bold'), bg='white')
         b1515.grid(row=4, column=5, padx=2, pady=2, sticky=W)
         
+        #save,update,delete,clear buttons creation        
         bf=Frame(frame2_1,bd=2,relief=RIDGE,bg='white')
-        bf.place(x=3,y=160,width=613,height=45)
-        
+        bf.place(x=3,y=160,width=613,height=45)        
         bt1=Button(bf,command=self.save_data,text='SAVE',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
         bt1.grid(row=0,column=0,padx=3,pady=3)
         bt2=Button(bf,command=self.update_data,text='UPDATE',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
@@ -167,6 +167,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         bt4=Button(bf,command=self.clear_data,text='CLEAR',font=("Comic Sans MS", 10, 'bold'),bg='#fee01c',width=17,fg='black')
         bt4.grid(row=0,column=3,padx=3,pady=3)
         
+        #an image has been incorporated on the right side of the screen to enhance the GUI and eliminate its vacant appearance
         i4=Image.open('images/i2.jpg')
         i4=i4.resize((472,222), Image.LANCZOS)
         self.i44=ImageTk.PhotoImage(i4)
