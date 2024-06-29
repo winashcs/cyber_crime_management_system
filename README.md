@@ -1,5 +1,6 @@
 # Cybersecurity Incident Management System: A Comprehensive Guide
-Introduction
+
+**Introduction**
 In today's digital age, cybersecurity incidents pose significant threats to individuals, businesses, and governments alike. As cyberattacks become more sophisticated and frequent, the need for effective Cybersecurity Incident Management Systems (CIMS) has never been greater. These systems are crucial for identifying, responding to, and mitigating cyber threats promptly. This article explores the design and implementation of a CIMS using Python and Tkinter, providing a detailed walkthrough of its development, functionalities, and the underlying concepts.
 
 Understanding Cybersecurity Incident Management
