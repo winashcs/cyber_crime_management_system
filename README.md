@@ -23,7 +23,7 @@ The Cybersecurity Incident Management System includes the following features for
 - **Impact Assessment:** Evaluation of the severity and impact of the cybercrime incident, including financial loss, data breach, operational disruption, etc.
 - **IP Address:** IP address associated with the incident, providing information about the origin of the attack or affected systems.
 - **Device Information:** Details of devices involved in the incident (e.g., computers, mobile phones, servers), aiding in understanding attack vectors.
-- **Related Incident:** Reference to other incidents related to or triggered by the primary incident, facilitating comprehensive incident management.
+- **Related Incident:** Reference to other incidents related to or triggered by the primary incident, facilitating comprehensive incident management. Additionally, we can link the related incidents based on Case ID.
 - **Suspect Name:** Organization name or individual suspect's name involved in the incident.
 - **Suspect Gender:** Gender of the suspect if known, helping in profiling and investigation.
 - **Suspect Details:** Contact details such as phone number or address of the suspect, aiding law enforcement or legal proceedings.
