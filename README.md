@@ -55,12 +55,6 @@ The Cybersecurity Incident Management System encompasses several key modules to 
 - **Date Selection:** Integration of tkcalendar widget for date management, facilitating accurate timestamp recording and chronological incident tracking.
 - **User Interaction:** Intuitive interface with functional buttons (Save, Update, Delete, Clear) for streamlined data management and user engagement, ensuring user-friendly operation and productivity.
 
-## Security Measures
-Security is paramount in the Cybersecurity Incident Management System, with robust measures implemented to safeguard sensitive data and ensure compliance:
-- **User Authentication:** Implementation of authentication mechanisms to verify user identities and restrict unauthorized access to system functionalities and incident data.
-- **Data Encryption:** Utilization of encryption techniques to protect data integrity and confidentiality during storage and transmission, mitigating risks of unauthorized access and data breaches.
-- **Access Control:** Role-based access control (RBAC) to enforce least privilege principles, granting users appropriate permissions based on their roles and responsibilities within the organization.
-- **Audit Trails:** Logging and monitoring of user activities and system events to facilitate accountability, forensic analysis, and compliance auditing, ensuring transparency and traceability in incident management processes.
 
 ## Detailed System Walkthrough
 ### GUI Design and Layout
