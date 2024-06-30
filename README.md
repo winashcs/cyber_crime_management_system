@@ -8,7 +8,7 @@ Cybersecurity Incident Management involves processes and strategies aimed at han
 - **Detect and Respond Promptly:** Identify potential threats and respond swiftly to minimize damage. This involves real-time monitoring and alert mechanisms to quickly identify anomalous activities.
 - **Investigate and Analyze:** Conduct thorough investigations to understand the scope and impact of incidents. Detailed forensic analysis and data correlation help in determining the origin, method, and impact of cyber incidents.
 - **Mitigate Risks:** Implement measures to prevent future incidents and protect sensitive information. This includes proactive security measures such as patch management, vulnerability assessments, and security awareness training.
-- **Maintain Compliance:** Adhere to regulatory requirements and standards regarding data protection and incident reporting. Compliance with regulations such as GDPR, HIPAA, or PCI-DSS is crucial for avoiding legal ramifications and maintaining trust with stakeholders.
+- **Maintain Compliance:** Adhere to regulatory requirements and standards regarding data protection and incident reporting. Compliance with regulations such as General Data Protection Regulation is crucial for avoiding legal ramifications and maintaining trust with stakeholders.
 
 ## Features
 The Cybersecurity Incident Management System includes the following features for managing incidents:
