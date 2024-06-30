@@ -2,7 +2,7 @@ from tkinter import* # for creating graphic user interface
 from tkinter import ttk  # (themed tk) we use ttk for modern widgets like buttons, labels, and other GUI elements
 from PIL import Image,ImageTk # helps for image processing in gui
 from tkcalendar import Calendar # for date
-import mysql.connector # to connect to mysql
+import sqlite3 # to connect to sqlite
 from tkinter import messagebox # for displaying messages
 
 class CC: #i used CC here because CyberCrime will be a long keyword
@@ -11,6 +11,28 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.root.geometry('1366x768+0+0') #This is my screen resolution
         self.root.title('Cybersecurity Incident Management System') 
         self.root.iconbitmap('images/icon.ico')
+        
+        # SQLite database connection
+        self.con = sqlite3.connect('cims_data.db')
+        self.cursor = self.con.cursor()
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS cybersecurity (
+                            Case_ID TEXT PRIMARY KEY,
+                            Victim_Name TEXT,
+                            Victim_Gender TEXT,
+                            Victim_Details TEXT,
+                            Date_of_incident TEXT,
+                            Type_of_cybercrime TEXT,
+                            Type_of_cyberattack TEXT,
+                            Impact_Assessment TEXT,
+                            IP_Address TEXT,
+                            Device_Information TEXT,
+                            Related_Incident TEXT,
+                            Suspect_Name TEXT,
+                            Suspect_Gender TEXT,
+                            Suspect_Details TEXT,
+                            Status TEXT
+                            )''')
+        self.con.commit()
         
         #variables created below for backend logics
         self.var_case_id=StringVar()
@@ -264,35 +286,48 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.get_data()
         
     #this function is created to save cybersecurity incident data 
-    #to a MySQL database after validation, showing errors or success messages accordingly 
+    #to a SQLite database after validation, showing errors or success messages accordingly 
     def save_data(self):
-        if self.var_case_id.get()=="" or self.var_case_id.get()=="" or self.var_victim_name.get()=="" or self.var_victim_gender.get()=="" or self.var_victim_details.get()=="" or self.var_date_of_incident.get()=="" or self.var_type_of_cybercrime.get()=="" or self.var_type_of_cyberattack.get()=="" or self.var_impact_assessment.get()=="" or self.var_ip_address.get()=="" or self.var_device_information.get()=="" or self.var_related_incident.get()=="" or self.var_suspect_name.get()=="" or self.var_suspect_gender.get()=="" or self.var_suspect_details.get()=="" or self.var_status.get()=="SELECT ▼":   
-            messagebox.showerror('Error','ALL ENTRIES ARE MANDATORY')
+        if self.var_case_id.get() == "" or self.var_victim_name.get() == "" or \
+           self.var_victim_gender.get() == "" or self.var_victim_details.get() == "" or \
+           self.var_date_of_incident.get() == "" or self.var_type_of_cybercrime.get() == "" or \
+           self.var_type_of_cyberattack.get() == "" or self.var_impact_assessment.get() == "" or \
+           self.var_ip_address.get() == "" or self.var_device_information.get() == "" or \
+           self.var_related_incident.get() == "" or self.var_suspect_name.get() == "" or \
+           self.var_suspect_gender.get() == "" or self.var_suspect_details.get() == "" or \
+           self.var_status.get() == "SELECT ▼":
+            messagebox.showerror('Error', 'ALL ENTRIES ARE MANDATORY')
         else:
             try:
-                con=mysql.connector.connect(host='localhost',username='root',password='mysql',database='cims_data')
-                my_cursor=con.cursor()
-                my_cursor.execute('insert into cybersecurity values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',(self.var_case_id.get(),self.var_victim_name.get(),self.var_victim_gender.get(),self.var_victim_details.get(),self.var_date_of_incident.get(),self.var_type_of_cybercrime.get(),self.var_type_of_cyberattack.get(),self.var_impact_assessment.get(),self.var_ip_address.get(),self.var_device_information.get(),self.var_related_incident.get(),self.var_suspect_name.get(),self.var_suspect_gender.get(),self.var_suspect_details.get(),self.var_status.get()))
-                con.commit()
+                self.cursor.execute('''
+                    INSERT INTO cybersecurity (Case_ID, Victim_Name, Victim_Gender, Victim_Details, 
+                                              Date_of_incident, Type_of_cybercrime, Type_of_cyberattack, 
+                                              Impact_Assessment, IP_Address, Device_Information, Related_Incident, 
+                                              Suspect_Name, Suspect_Gender, Suspect_Details, Status) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+                                   (self.var_case_id.get(), self.var_victim_name.get(), self.var_victim_gender.get(),
+                                    self.var_victim_details.get(), self.var_date_of_incident.get(),
+                                    self.var_type_of_cybercrime.get(), self.var_type_of_cyberattack.get(),
+                                    self.var_impact_assessment.get(), self.var_ip_address.get(),
+                                    self.var_device_information.get(), self.var_related_incident.get(),
+                                    self.var_suspect_name.get(), self.var_suspect_gender.get(),
+                                    self.var_suspect_details.get(), self.var_status.get()))
+                self.con.commit()
                 self.get_data()
                 self.clear_data()
-                con.close()
-                messagebox.showinfo('Success','CYBERSECURITY ALERT SUCCESSFULLY DEPLOYED')
+                messagebox.showinfo('Success', 'CYBERSECURITY ALERT SUCCESSFULLY DEPLOYED')
             except Exception as es:
-                messagebox.showerror('Error',f'Due to {str(es)}')
+                messagebox.showerror('Error', f'Due to {str(es)}')
                 
-    #this function is created for fetching all the data form MySQL
+    #this function is created for fetching all the data form SQLite
     def get_data(self):
-        con=mysql.connector.connect(host='localhost',username='root',password='mysql',database='cims_data')
-        my_cursor=con.cursor()
-        my_cursor.execute('select * from cybersecurity')
-        data=my_cursor.fetchall()
-        if len(data)!=0:
+        self.cursor.execute('SELECT * FROM cybersecurity')
+        data = self.cursor.fetchall()
+        if len(data) != 0:
             self.details_table.delete(*self.details_table.get_children())
-            for i in data:
-                self.details_table.insert('',END,values=i)
-            con.commit()
-        con.close()
+            for row in data:
+                self.details_table.insert('', END, values=row)
+            self.con.commit()
         
     #this function retrieves and displays data from a selected row in table widget and also
     #setting corresponding entry fields for editing or viewing purposes.    
@@ -316,76 +351,64 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.var_suspect_details.set(data[13])
         self.var_status.set(data[14])
         
-    #this function updates data in MySQL after validation, 
+    #this function updates data in SQLite after validation, 
     #confirming with the user before executing and displaying appropriate messages for success or errors.
     def update_data(self):
-        if (self.var_case_id.get() == "" or self.var_victim_name.get() == "" or 
-            self.var_victim_gender.get() == "" or self.var_victim_details.get() == "" or 
-            self.var_date_of_incident.get() == "" or self.var_type_of_cybercrime.get() == "" or 
-            self.var_type_of_cyberattack.get() == "" or self.var_impact_assessment.get() == "" or 
-            self.var_ip_address.get() == "" or self.var_device_information.get() == "" or 
-            self.var_related_incident.get() == "" or self.var_suspect_name.get() == "" or 
-            self.var_suspect_gender.get() == "" or self.var_suspect_details.get() == "" or 
-            self.var_status.get() == "SELECT ▼"):            
-                messagebox.showerror('Error', 'ALL ENTRIES ARE MANDATORY')
+        if (self.var_case_id.get() == "" or self.var_victim_name.get() == "" or
+            self.var_victim_gender.get() == "" or self.var_victim_details.get() == "" or
+            self.var_date_of_incident.get() == "" or self.var_type_of_cybercrime.get() == "" or
+            self.var_type_of_cyberattack.get() == "" or self.var_impact_assessment.get() == "" or
+            self.var_ip_address.get() == "" or self.var_device_information.get() == "" or
+            self.var_related_incident.get() == "" or self.var_suspect_name.get() == "" or
+            self.var_suspect_gender.get() == "" or self.var_suspect_details.get() == "" or
+            self.var_status.get() == "SELECT ▼"):
+            messagebox.showerror('Error', 'ALL ENTRIES ARE MANDATORY')
         else:
-            try:
-                update = messagebox.askyesno('Update', 'Would you like to confirm UPDATING this record')
-                if update:
-                    con = mysql.connector.connect(host='localhost', username='root', password='mysql', database='cims_data')
-                    my_cursor = con.cursor()                 
-                    my_cursor.execute('SELECT Case_ID FROM cybersecurity WHERE Case_ID = %s', (self.var_case_id.get(),))
-                    existing_case = my_cursor.fetchone()                    
-                    if existing_case:
-                        my_cursor.execute('UPDATE cybersecurity SET Victim_Name=%s, Victim_Gender=%s, Victim_Details=%s, '
-                                        'Date_of_incident=%s, Type_of_cybercrime=%s, Type_of_cyberattack=%s, '
-                                        'Impact_Assessment=%s, IP_address=%s, Device_Information=%s, '
-                                        'Related_Incident=%s, Suspect_Name=%s, Suspect_Gender=%s, '
-                                        'Suspect_Details=%s, Status=%s WHERE Case_ID=%s',
-                                        (self.var_victim_name.get(), self.var_victim_gender.get(), 
-                                        self.var_victim_details.get(), self.var_date_of_incident.get(), 
-                                        self.var_type_of_cybercrime.get(), self.var_type_of_cyberattack.get(), 
-                                        self.var_impact_assessment.get(), self.var_ip_address.get(), 
-                                        self.var_device_information.get(), self.var_related_incident.get(), 
-                                        self.var_suspect_name.get(), self.var_suspect_gender.get(), 
-                                        self.var_suspect_details.get(), self.var_status.get(), 
-                                        self.var_case_id.get()))
-                    else:
-                        messagebox.showerror('Error', 'Case ID does not exist for updating.')
-                        return                    
-                    con.commit()
-                    self.get_data()
-                    self.clear_data()
-                    con.close()
-                    messagebox.showinfo('Success', 'CYBERSECURITY ALERT SUCCESSFULLY UPDATED')                    
-                else:
-                    return                
+            try:            
+                case_id = self.var_case_id.get()
+                self.cursor.execute('SELECT * FROM cybersecurity WHERE Case_ID=?', (case_id,))
+                data = self.cursor.fetchone()
+                if data is None:
+                    messagebox.showerror('Error', 'Case ID does not exist. Please enter a valid Case ID.')
+                else:                    
+                    update = messagebox.askyesno('Update', 'Would you like to confirm UPDATING this record?')
+                    if update:                      
+                        self.cursor.execute('''
+                            UPDATE cybersecurity SET Victim_Name=?, Victim_Gender=?, Victim_Details=?, 
+                            Date_of_incident=?, Type_of_cybercrime=?, Type_of_cyberattack=?, Impact_Assessment=?, 
+                            IP_Address=?, Device_Information=?, Related_Incident=?, Suspect_Name=?, Suspect_Gender=?, 
+                            Suspect_Details=?, Status=?
+                            WHERE Case_ID=?''',
+                            (self.var_victim_name.get(), self.var_victim_gender.get(), self.var_victim_details.get(),
+                            self.var_date_of_incident.get(), self.var_type_of_cybercrime.get(),
+                            self.var_type_of_cyberattack.get(), self.var_impact_assessment.get(), self.var_ip_address.get(),
+                            self.var_device_information.get(), self.var_related_incident.get(), self.var_suspect_name.get(),
+                            self.var_suspect_gender.get(), self.var_suspect_details.get(), self.var_status.get(),
+                            case_id))
+                        self.con.commit()                        
+                        print(f"Record with Case ID '{case_id}' updated successfully.")                        
+                        self.get_data()                        
+                        self.clear_data()                        
+                        messagebox.showinfo('Success', 'Record updated successfully')
             except Exception as es:
-                messagebox.showerror('Error', f'Due to {str(es)}')
-
+                messagebox.showerror('Error', f'Error updating record: {str(es)}')
                       
-    #this function deletes a MySQL record after verifying all necessary fields are filled
+    #this function deletes a SQLite record after verifying all necessary fields are filled
     #confirming with the user, it then displays messages indicating success or errors based on the outcome
     def delete_data(self):
-        if self.var_case_id.get()=="" or self.var_case_id.get()=="" or self.var_victim_name.get()=="" or self.var_victim_gender.get()=="" or self.var_victim_details.get()=="" or self.var_date_of_incident.get()=="" or self.var_type_of_cybercrime.get()=="" or self.var_type_of_cyberattack.get()=="" or self.var_impact_assessment.get()=="" or self.var_ip_address.get()=="" or self.var_device_information.get()=="" or self.var_related_incident.get()=="" or self.var_suspect_name.get()=="" or self.var_suspect_gender.get()=="" or self.var_suspect_details.get()=="" or self.var_status.get()=="SELECT ▼":   
-            messagebox.showerror('Error','ALL ENTRIES ARE MANDATORY')
+        if self.var_case_id.get() == "":
+            messagebox.showerror('Error', 'Please select a record to delete')
         else:
             try:
-                delete=messagebox.askyesno('Delete','Would you like to confirm DELETING this record')
-                if delete>0:
-                    con=mysql.connector.connect(host='localhost',username='root',password='mysql',database='cims_data')
-                    my_cursor=con.cursor()
-                    my_cursor.execute('delete from cybersecurity where Case_ID=%s',(self.var_case_id.get(),))
-                else:
-                    if not delete:
-                        return
-                con.commit()
-                self.get_data()
-                self.clear_data()
-                con.close()
-                messagebox.showinfo('Success','CYBERSECURITY ALERT SUCCESSFULLY DESTROYED')
+                delete = messagebox.askyesno('Delete', 'Confirm deletion of this record?')
+                if delete:
+                    self.cursor.execute('DELETE FROM cybersecurity WHERE Case_ID=?', (self.var_case_id.get(),))
+                    self.con.commit()
+                    self.get_data()
+                    self.clear_data()
+                    messagebox.showinfo('Success', 'Record deleted successfully')
             except Exception as es:
-                messagebox.showerror('Error',f'Due to {str(es)}')
+                messagebox.showerror('Error', f'Due to {str(es)}')
                 
     def clear_data(self):
         self.var_case_id.set("")
@@ -404,26 +427,41 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.var_suspect_details.set("")
         self.var_status.set("SELECT ▼")
         
-    #this function searches a MySQL database using user-specified criteria
+    #this function searches a SQLite database using user-specified criteria
     #presenting matching results in a table widget or handling errors as needed.
     def search_data(self):
-        if self.var_1_search.get()=="":
-            messagebox.showerror('Error','ALL ENTRIES ARE MANDATORY')                 
+        if self.var_1_search.get() == "":
+            messagebox.showerror('Error', 'ALL ENTRIES ARE MANDATORY')
         else:
             try:
-                con=mysql.connector.connect(host='localhost',username='root',password='mysql',database='cims_data')
-                my_cursor=con.cursor()
-                sql = 'SELECT * FROM cybersecurity WHERE {} LIKE %s'.format(self.var_1_search.get())
-                my_cursor.execute(sql, ('%' + self.var_2_search.get() + '%',))
-                rows=my_cursor.fetchall()
-                if len(rows)!=0:
+                con = sqlite3.connect('cims_data.db')
+                my_cursor = con.cursor()
+                
+                # Assuming you have a table named 'cybersecurity' in SQLite with columns: Case_ID, IP_address, status
+                # Adjust the query based on the column selected in var_1_search.get()
+                if self.var_1_search.get() == 'Case_ID':
+                    column = 'Case_ID'
+                elif self.var_1_search.get() == 'IP_address':
+                    column = 'IP_address'
+                elif self.var_1_search.get() == 'Status':
+                    column = 'Status'
+                else:
+                    messagebox.showerror('Error', 'Invalid search criteria')
+                    return                
+                sql = f"SELECT * FROM cybersecurity WHERE {column} LIKE ?"
+                my_cursor.execute(sql, ('%' + self.var_2_search.get() + '%',))                
+                rows = my_cursor.fetchall()
+                if len(rows) != 0:
+                    # Assuming self.details_table is where you display the results
                     self.details_table.delete(*self.details_table.get_children())
                     for i in rows:
-                        self.details_table.insert('',END,values=i)
+                        self.details_table.insert('', 'end', values=i)
+                else:
+                    messagebox.showinfo('Info', 'No records found')                
                 con.commit()
                 con.close()
             except Exception as es:
-                messagebox.showerror('Error',f'Due to {str(es)}')                      
+                messagebox.showerror('Error', f'Due to {str(es)}')                
                               
 #this code initializes a tkinter application
 #creates an instance of the CC class, and starts the main event loop for GUI interaction.
@@ -433,5 +471,5 @@ if __name__=="__main__":
     root.mainloop()
     
     
-    
+   
     
