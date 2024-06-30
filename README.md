@@ -94,4 +94,3 @@ The Cybersecurity Incident Management System optimizes user workflow through int
 The Cybersecurity Incident Management System described in this article exemplifies the importance of proactive cyber threat management and efficient incident response. By leveraging Python's Tkinter library and MySQL database, organizations can deploy a robust system to safeguard against cyber threats effectively. The integration of user-friendly GUI, advanced data validation and database operations ensures seamless functionality and enhanced usability for cybersecurity professionals and administrators.
 
 In conclusion, the continuous evolution of cybersecurity threats necessitates the adoption of comprehensive incident management systems. This article provides a detailed guide to designing and implementing a CIMS using Python and Tkinter, empowering organizations to bolster their defenses and respond effectively to cyber incidents.
-
