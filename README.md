@@ -44,6 +44,7 @@ The Cybersecurity Incident Management System leverages a robust technology stack
 - **tkcalendar:** Tkinter calendar widget for date selection, ensuring accurate timestamp management and event scheduling.
 - **MySQL:** Relational database management system for storing and retrieving incident data securely, supporting efficient data management and scalability.
 
+
 ## System Architecture
 The architecture of the Cybersecurity Incident Management System is designed to be modular and scalable, comprising the following components:
 - **Graphical User Interface (GUI):** Developed using Tkinter and themed widgets (ttk), providing an intuitive and responsive interface for incident data entry, visualization, and management.
