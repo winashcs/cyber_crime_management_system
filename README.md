@@ -52,6 +52,7 @@ The architecture of the Cybersecurity Incident Management System is designed to 
 - **Image Processing:** Utilization of PIL (Pillow) library for image handling within the GUI, supporting graphical representation and visualization of incident-related data.
 - **Offline Support:** Implementation of local storage and synchronization mechanisms to facilitate offline operation, enabling seamless data capture and management in environments with limited or intermittent internet connectivity.
 
+
 ## Functional Modules
 The Cybersecurity Incident Management System encompasses several key modules to facilitate comprehensive incident management and operational efficiency:
 - **Data Entry and Validation:** Structured forms for capturing incident details, ensuring completeness and accuracy through validation mechanisms.
