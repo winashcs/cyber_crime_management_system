@@ -3,12 +3,14 @@
 ## Introduction
 In today's digital age, cybersecurity incidents pose significant threats to individuals, businesses, and governments alike. As cyberattacks become more sophisticated and frequent, the need for effective Cybersecurity Incident Management Systems (CIMS) has never been greater. These systems are crucial for identifying, responding to, and mitigating cyber threats promptly. This article explores the design and implementation of a CIMS using Python and Tkinter, providing a detailed walkthrough of its development, functionalities, and the underlying concepts.
 
+
 ## Understanding Cybersecurity Incident Management
 Cybersecurity Incident Management involves processes and strategies aimed at handling and mitigating the impact of security breaches, unauthorized access, data theft, and other cyber threats. A robust CIMS enables organizations to:
 - **Detect and Respond Promptly:** Identify potential threats and respond swiftly to minimize damage. This involves real-time monitoring and alert mechanisms to quickly identify anomalous activities.
 - **Investigate and Analyze:** Conduct thorough investigations to understand the scope and impact of incidents. Detailed forensic analysis and data correlation help in determining the origin, method, and impact of cyber incidents.
 - **Mitigate Risks:** Implement measures to prevent future incidents and protect sensitive information. This includes proactive security measures such as patch management, vulnerability assessments, and security awareness training.
 - **Maintain Compliance:** Adhere to regulatory requirements and standards regarding data protection and incident reporting. Compliance with regulations such as General Data Protection Regulation is crucial for avoiding legal ramifications and maintaining trust with stakeholders.
+
 
 ## Features
 The Cybersecurity Incident Management System includes the following features for managing incidents:
