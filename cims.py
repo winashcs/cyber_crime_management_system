@@ -436,9 +436,6 @@ class CC: #i used CC here because CyberCrime will be a long keyword
             try:
                 con = sqlite3.connect('cims_data.db')
                 my_cursor = con.cursor()
-                
-                # Assuming you have a table named 'cybersecurity' in SQLite with columns: Case_ID, IP_address, status
-                # Adjust the query based on the column selected in var_1_search.get()
                 if self.var_1_search.get() == 'Case_ID':
                     column = 'Case_ID'
                 elif self.var_1_search.get() == 'IP_address':
