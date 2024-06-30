@@ -1,9 +1,9 @@
-from tkinter import* # for creating graphic user interface
-from tkinter import ttk  # (themed tk) we use ttk for modern widgets like buttons, labels, and other GUI elements
-from PIL import Image,ImageTk # helps for image processing in gui
-from tkcalendar import Calendar # for date
+from tkinter import* #for creating graphic user interface
+from tkinter import ttk  #(themed tk) we use ttk for modern widgets like buttons, labels, and other GUI elements
+from PIL import Image,ImageTk #helps for image processing in gui
+from tkcalendar import Calendar #for date
 import sqlite3 # to connect to sqlite
-from tkinter import messagebox # for displaying messages
+from tkinter import messagebox #for displaying messages
 
 class CC: #i used CC here because CyberCrime will be a long keyword
     def __init__(self,root):
