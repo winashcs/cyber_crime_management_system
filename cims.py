@@ -409,7 +409,8 @@ class CC: #i used CC here because CyberCrime will be a long keyword
                     messagebox.showinfo('Success', 'Record deleted successfully')
             except Exception as es:
                 messagebox.showerror('Error', f'Due to {str(es)}')
-                
+     
+    #this function is used to clear or reset the input data in entry fields            
     def clear_data(self):
         self.var_case_id.set("")
         self.var_victim_name.set("")
