@@ -12,7 +12,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.root.title('Cybersecurity Incident Management System') 
         self.root.iconbitmap('images/icon.ico')
         
-        # SQLite database connection
+        #SQLite database connection setup
         self.con = sqlite3.connect('cims_data.db')
         self.cursor = self.con.cursor()
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS cybersecurity (
