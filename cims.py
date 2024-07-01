@@ -400,7 +400,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
             messagebox.showerror('Error', 'Please select a record to delete')
         else:
             try:
-                delete = messagebox.askyesno('Delete', 'Confirm deletion of this record?')
+                delete = messagebox.askyesno('Delete', 'Confirm DELETION of this record?')
                 if delete:
                     self.cursor.execute('DELETE FROM cybersecurity WHERE Case_ID=?', (self.var_case_id.get(),))
                     self.con.commit()
