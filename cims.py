@@ -16,7 +16,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
         self.con = sqlite3.connect('cims_data.db')
         self.cursor = self.con.cursor()
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS cybersecurity (
-                            Case_ID TEXT PRIMARY KEY,
+                            Case_ID INTEGER PRIMARY KEY,
                             Victim_Name TEXT,
                             Victim_Gender TEXT,
                             Victim_Details TEXT,
