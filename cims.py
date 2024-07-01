@@ -462,7 +462,4 @@ if __name__=="__main__":
     root=Tk()
     obj=CC(root)
     root.mainloop()
-    
-    
-   
-    
+        
