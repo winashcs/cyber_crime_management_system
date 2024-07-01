@@ -449,7 +449,6 @@ class CC: #i used CC here because CyberCrime will be a long keyword
                 my_cursor.execute(sql, ('%' + self.var_2_search.get() + '%',))                
                 rows = my_cursor.fetchall()
                 if len(rows) != 0:
-                    # Assuming self.details_table is where you display the results
                     self.details_table.delete(*self.details_table.get_children())
                     for i in rows:
                         self.details_table.insert('', 'end', values=i)
