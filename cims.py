@@ -434,8 +434,6 @@ class CC: #i used CC here because CyberCrime will be a long keyword
             messagebox.showerror('Error', 'ALL ENTRIES ARE MANDATORY')
         else:
             try:
-                con = sqlite3.connect('cims_data.db')
-                my_cursor = con.cursor()
                 if self.var_1_search.get() == 'Case_ID':
                     column = 'Case_ID'
                 elif self.var_1_search.get() == 'IP_address':
@@ -446,16 +444,14 @@ class CC: #i used CC here because CyberCrime will be a long keyword
                     messagebox.showerror('Error', 'Invalid search criteria')
                     return                
                 sql = f"SELECT * FROM cybersecurity WHERE {column} LIKE ?"
-                my_cursor.execute(sql, ('%' + self.var_2_search.get() + '%',))                
-                rows = my_cursor.fetchall()
+                self.cursor.execute(sql, ('%' + self.var_2_search.get() + '%',))                
+                rows = self.cursor.fetchall()
                 if len(rows) != 0:
                     self.details_table.delete(*self.details_table.get_children())
                     for i in rows:
                         self.details_table.insert('', 'end', values=i)
                 else:
                     messagebox.showinfo('Info', 'No records found')                
-                con.commit()
-                con.close()
             except Exception as es:
                 messagebox.showerror('Error', f'Due to {str(es)}')                
                               
