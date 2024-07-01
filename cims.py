@@ -319,7 +319,7 @@ class CC: #i used CC here because CyberCrime will be a long keyword
             except Exception as es:
                 messagebox.showerror('Error', f'Due to {str(es)}')
                 
-    #this function is created for fetching all the data form SQLite
+    #this function is created for fetching all the data from SQLite
     def get_data(self):
         self.cursor.execute('SELECT * FROM cybersecurity')
         data = self.cursor.fetchall()
